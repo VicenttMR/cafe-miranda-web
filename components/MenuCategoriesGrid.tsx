@@ -14,9 +14,8 @@ function CategoryCard({ category, index }: { category: Category; index: number }
       viewport={{ once: true, margin: "-40px" }}
       transition={{ duration: 0.55, delay: index * 0.12 }}
       className="relative overflow-hidden group cursor-default"
-      style={{ height: "clamp(320px, 38vw, 440px)" }}
     >
-      {/* Background photo */}
+      {/* Background photo — absolute, covers full card height */}
       <Image
         src={category.image}
         alt={category.name}
@@ -36,8 +35,11 @@ function CategoryCard({ category, index }: { category: Category; index: number }
       {/* Red bottom line grows on hover */}
       <div className="absolute bottom-0 left-0 right-0 h-[3px] bg-miranda-red origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
 
-      {/* Content */}
-      <div className="absolute inset-0 flex flex-col justify-center px-6 py-8 sm:px-8 sm:py-10">
+      {/* Content — in normal flow so card grows to fit items */}
+      <div
+        className="relative z-10 flex flex-col justify-center px-6 py-10 sm:px-8 sm:py-12"
+        style={{ minHeight: "clamp(320px, 38vw, 440px)" }}
+      >
         <h2
           className="font-anton uppercase text-white text-center mb-7 leading-none"
           style={{ fontSize: "clamp(2rem, 4vw, 2.75rem)" }}
@@ -48,12 +50,12 @@ function CategoryCard({ category, index }: { category: Category; index: number }
         <div className="flex flex-col gap-3">
           {category.items.map((item) => (
             <div key={item.name} className="flex items-baseline gap-1">
-              <span className="font-grotesk text-white/85 text-sm leading-none flex-shrink-0">
+              <span className="font-grotesk text-white/85 text-sm leading-snug flex-1">
                 {item.name}
               </span>
               {item.price !== null && (
                 <>
-                  <span className="flex-1 border-b border-dashed border-white/30 mx-2 mb-0.5" />
+                  <span className="border-b border-dashed border-white/30 w-4 mx-2 mb-0.5 flex-shrink-0" />
                   <span className="font-grotesk font-semibold text-white text-sm leading-none flex-shrink-0">
                     €{item.price.toFixed(2).replace(".", ",")}
                   </span>
