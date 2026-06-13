@@ -95,21 +95,6 @@ export default function HeroSection() {
         </motion.div>
       </div>
 
-      {/* Thin white ticker */}
-      <div className="bg-white py-1.5 overflow-hidden flex-shrink-0">
-        <motion.div
-          animate={{ x: "-50%" }}
-          transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-          className="flex gap-12 whitespace-nowrap w-max"
-        >
-          {[...Array(16)].map((_, i) => (
-            <span key={i} className={`font-grotesk text-xs tracking-[0.25em] text-miranda-dark ${i % 3 === 2 ? "text-miranda-teal" : ""}`}>
-              {["BRUNCH", "TAPAS", "AMOR"][i % 3]}
-            </span>
-          ))}
-        </motion.div>
-      </div>
-
       {/* Ticker */}
       <div className="bg-miranda-red py-3 overflow-hidden flex-shrink-0">
         <motion.div

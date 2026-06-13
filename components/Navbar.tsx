@@ -25,7 +25,7 @@ export default function Navbar() {
         initial={{ y: -80, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
-        className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-100"
+        className="fixed top-8 left-0 right-0 z-50 bg-white border-b border-gray-100"
       >
         <div className="container-max px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
@@ -92,7 +92,7 @@ export default function Navbar() {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className="fixed inset-0 z-40 bg-miranda-teal pt-16 px-6 flex flex-col"
+            className="fixed inset-0 z-40 bg-miranda-teal pt-24 px-6 flex flex-col"
           >
             <nav className="flex flex-col gap-1 mt-8">
               {navLinks.map((link, i) => (

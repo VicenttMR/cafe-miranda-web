@@ -5,6 +5,7 @@ import { cafeConfig } from "@/config/cafe-miranda";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import LocalBusinessSchema from "@/components/LocalBusinessSchema";
+import AnnouncementBar from "@/components/AnnouncementBar";
 
 const anton = Anton({
   subsets: ["latin"],
@@ -122,6 +123,7 @@ export default function RootLayout({
         <LocalBusinessSchema />
       </head>
       <body className="antialiased bg-white">
+        <AnnouncementBar />
         <Navbar />
         <main>{children}</main>
         <Footer />
