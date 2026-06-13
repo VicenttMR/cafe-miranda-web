@@ -22,12 +22,12 @@ export default function HeroSection() {
         loop
         muted
         playsInline
-        className="absolute inset-0 w-full h-full object-cover"
-        style={{ opacity: 0.18 }}
+        className="absolute inset-0 w-full h-full object-cover scale-[1.4]"
       >
         <source src="/videos/reel-1.mp4" type="video/mp4" />
       </video>
-      <div className="absolute inset-0 bg-miranda-teal/80" />
+      <div className="absolute inset-0 bg-miranda-dark/60" />
+      <div className="absolute inset-0 bg-miranda-teal/30" />
 
       <div className="relative z-10 flex-1 flex flex-col justify-center px-6 sm:px-10 lg:px-16 pt-24 pb-12">
 
