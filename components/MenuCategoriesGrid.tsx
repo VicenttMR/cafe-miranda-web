@@ -51,10 +51,14 @@ function CategoryCard({ category, index }: { category: Category; index: number }
               <span className="font-grotesk text-white/85 text-sm leading-none flex-shrink-0">
                 {item.name}
               </span>
-              <span className="flex-1 border-b border-dashed border-white/30 mx-2 mb-0.5" />
-              <span className="font-grotesk font-semibold text-white text-sm leading-none flex-shrink-0">
-                €{item.price.toFixed(2).replace(".", ",")}
-              </span>
+              {item.price !== null && (
+                <>
+                  <span className="flex-1 border-b border-dashed border-white/30 mx-2 mb-0.5" />
+                  <span className="font-grotesk font-semibold text-white text-sm leading-none flex-shrink-0">
+                    €{item.price.toFixed(2).replace(".", ",")}
+                  </span>
+                </>
+              )}
             </div>
           ))}
         </div>
