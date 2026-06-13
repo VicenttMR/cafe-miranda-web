@@ -1,6 +1,7 @@
 import HeroSection from "@/components/HeroSection";
 import HomeNav from "@/components/HomeNav";
 import HomeFavoritos from "@/components/HomeFavoritos";
+import HomeReels from "@/components/HomeReels";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import HomeReservaCTA from "@/components/HomeReservaCTA";
 
@@ -13,6 +14,7 @@ export default function HomePage() {
       <HeroSection />
       <HomeNav />
       <HomeFavoritos />
+      <HomeReels />
       <TestimonialsSection />
       <HomeReservaCTA />
     </>
