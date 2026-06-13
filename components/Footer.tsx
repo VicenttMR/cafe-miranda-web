@@ -27,13 +27,10 @@ export default function Footer() {
           {/* Brand */}
           <div className="lg:col-span-2">
             <div className="flex items-center gap-4 mb-6">
-              <div className="relative w-16 h-16 rounded-2xl overflow-hidden flex-shrink-0">
-                <Image src="/images/logo.jpg" alt="Café Miranda" fill className="object-cover" sizes="64px" />
+              <div className="relative w-16 h-16 flex-shrink-0">
+                <Image src="/images/logo-principal.png" alt="Café Miranda" fill className="object-contain" sizes="64px" />
               </div>
-              <div>
-                <p className="font-anton uppercase text-white text-2xl leading-none">Café Miranda</p>
-                <p className="font-grotesk text-white/40 text-sm mt-1">brunch, tapas y amor</p>
-              </div>
+              <p className="font-grotesk text-white/40 text-sm">brunch, tapas y amor</p>
             </div>
             <p className="font-grotesk text-sm text-white/50 leading-relaxed max-w-sm mb-6">
               En el corazón de Es Pujols, a dos minutos de la playa. Abiertos todos los días

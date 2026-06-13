@@ -12,7 +12,6 @@ import {
   type DietaryTag,
   type MenuCategoryId,
 } from "@/config/menu-items";
-import { cafeConfig } from "@/config/cafe-miranda";
 
 const DIETARY_COLORS: Record<DietaryTag, string> = {
   vegan: "bg-green-100 text-green-700",
@@ -29,10 +28,6 @@ function DietaryBadge({ tag }: { tag: DietaryTag }) {
 }
 
 function MenuCard({ item, index }: { item: MenuItem; index: number }) {
-  const whatsappMsg = encodeURIComponent(
-    `Hola! Me gustaría pedir: ${item.name} (€${item.price.toFixed(2).replace(".", ",")})`
-  );
-
   return (
     <motion.div
       layout
@@ -78,7 +73,7 @@ function MenuCard({ item, index }: { item: MenuItem; index: number }) {
           </div>
         )}
 
-        <div className="flex items-center justify-between mb-3">
+        <div className="flex items-center justify-between">
           <span className="font-anton text-miranda-red text-xl">
             €{item.price.toFixed(2).replace(".", ",")}
           </span>
@@ -89,15 +84,6 @@ function MenuCard({ item, index }: { item: MenuItem; index: number }) {
             </div>
           )}
         </div>
-
-        <a
-          href={`https://wa.me/${cafeConfig.whatsapp}?text=${whatsappMsg}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="block text-center bg-miranda-teal text-white font-grotesk font-semibold text-sm py-2.5 rounded-full hover:bg-miranda-teal/85 active:scale-[0.97] transition-all"
-        >
-          Añadir a reserva
-        </a>
       </div>
     </motion.div>
   );

@@ -16,7 +16,7 @@ export default function LocalBusinessSchema() {
       "https://cafemiranda.es/images/about.png",
       "https://cafemiranda.es/images/menu-1.png",
     ],
-    logo: "https://cafemiranda.es/images/logo.jpg",
+    logo: "https://cafemiranda.es/images/logo-principal.png",
     address: {
       "@type": "PostalAddress",
       streetAddress: "Av. Miramar, 30",

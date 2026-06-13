@@ -30,20 +30,17 @@ export default function Navbar() {
         <div className="container-max px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
 
-            <Link href="/" className="flex items-center gap-3">
-              <div className="relative h-10 w-10 flex-shrink-0">
+            <Link href="/" className="flex items-center">
+              <div className="relative h-14 w-14 flex-shrink-0">
                 <Image
-                  src="/images/logo.jpg"
+                  src="/images/logo-principal.png"
                   alt="Café Miranda"
                   fill
-                  className="object-contain rounded-full"
-                  sizes="40px"
+                  className="object-contain"
+                  sizes="56px"
                   priority
                 />
               </div>
-              <span className="font-anton uppercase text-miranda-dark text-lg tracking-wide">
-                Café Miranda
-              </span>
             </Link>
 
             <nav className="hidden lg:flex items-center gap-1">
@@ -96,8 +93,8 @@ export default function Navbar() {
             exit={{ opacity: 0, y: -10 }}
             className="fixed inset-0 z-40 bg-miranda-teal pt-16 px-6 flex flex-col"
           >
-            <div className="relative w-20 h-20 mx-auto mt-8 mb-8">
-              <Image src="/images/logo.jpg" alt="Café Miranda" fill className="object-contain rounded-2xl" sizes="80px" />
+            <div className="relative w-24 h-24 mx-auto mt-8 mb-8">
+              <Image src="/images/logo-principal.png" alt="Café Miranda" fill className="object-contain" sizes="96px" />
             </div>
 
             <nav className="flex flex-col gap-1">

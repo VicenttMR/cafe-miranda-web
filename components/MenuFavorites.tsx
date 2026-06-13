@@ -5,7 +5,6 @@ import { useRef } from "react";
 import Image from "next/image";
 import { Star } from "lucide-react";
 import { favoriteItems } from "@/config/menu-items";
-import { cafeConfig } from "@/config/cafe-miranda";
 
 export default function MenuFavorites() {
   const ref = useRef(null);
@@ -38,9 +37,6 @@ export default function MenuFavorites() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {favoriteItems.map((item, i) => {
-            const whatsappMsg = encodeURIComponent(
-              `Hola! Me gustaría pedir: ${item.name} (€${item.price.toFixed(2).replace(".", ",")})`
-            );
             return (
               <motion.div
                 key={item.id}
@@ -76,7 +72,7 @@ export default function MenuFavorites() {
                   <p className="font-grotesk text-white/65 text-sm mb-4 line-clamp-2">
                     {item.description}
                   </p>
-                  <div className="flex items-center justify-between mb-4">
+                  <div className="flex items-center justify-between">
                     <span className="font-anton text-white text-xl">
                       €{item.price.toFixed(2).replace(".", ",")}
                     </span>
@@ -87,14 +83,6 @@ export default function MenuFavorites() {
                       </div>
                     )}
                   </div>
-                  <a
-                    href={`https://wa.me/${cafeConfig.whatsapp}?text=${whatsappMsg}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block text-center bg-white text-miranda-dark font-grotesk font-semibold text-sm py-2.5 rounded-full hover:bg-miranda-teal hover:text-white transition-colors duration-200"
-                  >
-                    Añadir a reserva
-                  </a>
                 </div>
               </motion.div>
             );

@@ -89,14 +89,8 @@ export default function HeroSection() {
             </Link>
           </div>
 
-          <div className="flex items-center gap-4">
-            <div className="relative w-16 h-16 sm:w-20 sm:h-20 flex-shrink-0">
-              <Image src="/images/logo.jpg" alt="Logo Café Miranda" fill className="object-contain rounded-2xl" sizes="80px" priority />
-            </div>
-            <p className="font-grotesk text-white/70 text-sm max-w-[180px] leading-snug">
-              brunch, tapas y amor<br />
-              <span className="text-white/40 text-xs">Es Pujols, Formentera</span>
-            </p>
+          <div className="relative w-20 h-20 sm:w-24 sm:h-24 flex-shrink-0">
+            <Image src="/images/logo-principal.png" alt="Logo Café Miranda" fill className="object-contain" sizes="96px" priority />
           </div>
         </motion.div>
       </div>
