@@ -30,14 +30,14 @@ export default function Navbar() {
         <div className="container-max px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
 
-            <Link href="/" className="flex items-center">
-              <div className="relative h-[78px] w-[78px] flex-shrink-0">
+            <Link href="/" className="flex items-center self-stretch py-px">
+              <div className="relative h-full aspect-square">
                 <Image
                   src="/images/logo-principal.png"
                   alt="Café Miranda"
                   fill
                   className="object-contain"
-                  sizes="78px"
+                  sizes="80px"
                   priority
                 />
               </div>
