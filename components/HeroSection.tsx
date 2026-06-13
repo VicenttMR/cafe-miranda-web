@@ -16,7 +16,7 @@ export default function HeroSection() {
   return (
     <section className="relative bg-miranda-teal overflow-hidden flex flex-col min-h-screen">
 
-      <div className="flex-1 flex flex-col justify-center px-6 sm:px-10 lg:px-16 pt-24 pb-12">
+      <div className="flex-1 flex flex-col justify-center px-6 sm:px-10 lg:px-16 pt-32 pb-12">
 
         <motion.div
           initial={{ opacity: 0, y: 16 }}

@@ -26,7 +26,7 @@ export default function PageHeader({
   const strokeColor = bg === "dark" ? "#1DB5AD" : "white";
 
   return (
-    <div className={`${bgMap[bg]} pt-24 pb-12 px-6 sm:px-10 lg:px-16 overflow-hidden`}>
+    <div className={`${bgMap[bg]} pt-32 pb-12 px-6 sm:px-10 lg:px-16 overflow-hidden`}>
       <div className="container-max">
         {/* Back to home */}
         <motion.div
