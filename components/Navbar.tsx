@@ -31,13 +31,13 @@ export default function Navbar() {
           <div className="flex items-center justify-between h-20">
 
             <Link href="/" className="flex items-center">
-              <div className="relative h-[72px] w-[72px] flex-shrink-0">
+              <div className="relative h-[78px] w-[78px] flex-shrink-0">
                 <Image
                   src="/images/logo-principal.png"
                   alt="Café Miranda"
                   fill
                   className="object-contain"
-                  sizes="72px"
+                  sizes="78px"
                   priority
                 />
               </div>
