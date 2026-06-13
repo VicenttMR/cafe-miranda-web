@@ -16,7 +16,7 @@ export default function HeroSection() {
   return (
     <section className="relative bg-miranda-teal overflow-hidden flex flex-col min-h-screen">
 
-      <div className="flex-1 flex flex-col justify-center px-6 sm:px-10 lg:px-16 pt-32 pb-12">
+      <div className="flex-1 flex flex-col justify-center px-6 sm:px-10 lg:px-16 pt-24 pb-12">
 
         <motion.div
           initial={{ opacity: 0, y: 16 }}
@@ -104,6 +104,21 @@ export default function HeroSection() {
         >
           {[...TICKER_WORDS, ...TICKER_WORDS].map((word, i) => (
             <span key={i} className="font-anton uppercase text-white text-lg tracking-wider">{word}</span>
+          ))}
+        </motion.div>
+      </div>
+
+      {/* Thin white ticker */}
+      <div className="bg-white py-1.5 overflow-hidden flex-shrink-0">
+        <motion.div
+          animate={{ x: "-50%" }}
+          transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+          className="flex gap-12 whitespace-nowrap w-max"
+        >
+          {[...Array(16)].map((_, i) => (
+            <span key={i} className={`font-grotesk text-xs tracking-[0.25em] text-miranda-dark ${i % 3 === 2 ? "text-miranda-teal" : ""}`}>
+              {["BRUNCH", "TAPAS", "AMOR"][i % 3]}
+            </span>
           ))}
         </motion.div>
       </div>
