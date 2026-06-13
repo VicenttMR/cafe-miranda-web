@@ -89,8 +89,8 @@ export default function HeroSection() {
             </Link>
           </div>
 
-          <div className="relative w-20 h-20 sm:w-24 sm:h-24 flex-shrink-0">
-            <Image src="/images/logo-principal.png" alt="Logo Café Miranda" fill className="object-contain" sizes="96px" priority />
+          <div className="relative w-28 h-28 sm:w-36 sm:h-36 flex-shrink-0">
+            <Image src="/images/logo-principal.png" alt="Logo Café Miranda" fill className="object-contain" sizes="144px" priority />
           </div>
         </motion.div>
       </div>

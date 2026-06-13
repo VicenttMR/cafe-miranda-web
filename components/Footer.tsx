@@ -27,8 +27,8 @@ export default function Footer() {
           {/* Brand */}
           <div className="lg:col-span-2">
             <div className="flex items-center gap-4 mb-6">
-              <div className="relative w-16 h-16 flex-shrink-0">
-                <Image src="/images/logo-principal.png" alt="Café Miranda" fill className="object-contain" sizes="64px" />
+              <div className="relative w-24 h-24 flex-shrink-0">
+                <Image src="/images/logo-principal.png" alt="Café Miranda" fill className="object-contain" sizes="96px" />
               </div>
               <p className="font-grotesk text-white/40 text-sm">brunch, tapas y amor</p>
             </div>
