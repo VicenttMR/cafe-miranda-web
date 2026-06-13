@@ -6,67 +6,82 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ```bash
 npm run dev      # Dev server at http://localhost:3000
-npm run build    # Production build (run before deploying)
+npm run build    # Production build — run this to catch TypeScript errors before pushing
 npm run lint     # ESLint check
 ```
 
-No test suite exists. Verify changes with `npm run build` — TypeScript errors and broken imports surface there.
+No test suite. `npm run build` is the verification step.
 
 ## Architecture
 
-**Multi-page Next.js 14 App Router site.** Each route is a thin page file that composes a `PageHeader` + a section component + `HomeReservaCTA`.
+**Next.js 14 App Router, TypeScript, Tailwind CSS, Framer Motion.** Static export with no backend — reservations go through WhatsApp (`wa.me/` links), no forms hit a server.
 
-### Routing
+### Routes
 
-| Route | Page file |
+| Route | Notes |
 |---|---|
-| `/` | `app/page.tsx` — Hero + HomeNav (4 visual cards) + HomeReservaCTA |
-| `/menu` | `app/menu/page.tsx` |
-| `/nosotros` | `app/nosotros/page.tsx` |
-| `/merch` | `app/merch/page.tsx` |
-| `/donde-estamos` | `app/donde-estamos/page.tsx` |
-| `/reservas` | `app/reservas/page.tsx` |
+| `/` | Hero → HomeNav → HomeFavoritos → HomeReels → TestimonialsSection → HomeReservaCTA |
+| `/menu` | MenuHero → MenuCategoriesGrid → MenuPlatoDestacado → MenuGridMasonry → MenuPlatoDestacado (reverse) → MenuCTA |
+| `/nosotros` | PageHeader → AboutSection → HomeReservaCTA |
+| `/merch` | PageHeader → MerchSection → HomeReservaCTA |
+| `/donde-estamos` | PageHeader → LocationSection → HomeReservaCTA |
+| `/reservas` | PageHeader → ReservasSection |
 
-### Single config file
+### Two config files — all content lives here
 
-**All client-editable content lives in `config/cafe-miranda.ts`** — phone, address, hours, menu items, testimonials, merch, colors, SEO strings. Components import from here; never hardcode content in components.
+**`config/cafe-miranda.ts`** — everything site-wide: phone, address, hours, `favoritos` (home page featured dishes), `testimonials`, `merch`. Components import from `cafeConfig`; never hardcode content in components.
+
+**`config/menu-items.ts`** — dedicated to the `/menu` page: `menuConfig` with `hero`, `categories` (4), `destacado`, `masonry` (6 photos), `secundario`, `cta`. Edit here to change the menu page.
+
+### Layout-level components
+
+`app/layout.tsx` renders two fixed elements before `<Navbar />`:
+- `<AnnouncementBar />` — white animated ticker fixed at `top-0 z-[60]`, always visible on scroll, on every page
+- `<Navbar />` — fixed at `top-8` (32px, directly below the bar), `z-50`, h-16 with a 140×140px logo that overflows the navbar intentionally
+
+Total fixed header height: ~96px. All page sections use `pt-24` to clear it.
 
 ### Component conventions
 
-- Section components (MenuShowcase, AboutSection, etc.) accept `hideHeader?: boolean`. When `true`, they skip their own teal/red header block because the page uses `PageHeader` instead. This avoids duplicate headings between the home single-page version and the dedicated page version.
-- All animated components are `"use client"` and use `useInView` from Framer Motion for scroll-triggered animations.
-- `PageHeader` is a shared animated header used by every subpage — takes `label`, `title`, `titleOutline?`, and `bg` (`"teal" | "red" | "dark"`).
+- All animated components are `"use client"` and trigger via `useInView` from Framer Motion.
+- `PageHeader` is used by every subpage — props: `label`, `title`, `titleOutline?`, `bg: "teal" | "red" | "dark"`.
+- `AboutSection` accepts `hideHeader?: boolean` — pass `hideHeader` on `/nosotros` because `PageHeader` already renders the heading.
 
-### Fonts
+### Fonts (Tailwind classes)
 
-Three CSS variables defined in `app/layout.tsx`:
-- `--font-anton` → `font-anton` (display headings, matches logo weight)
-- `--font-grotesk` → `font-grotesk` (body, labels, buttons)
-- `--font-inter` → `font-inter` (small UI text)
+- `font-anton` — display headings
+- `font-grotesk` — body, labels, buttons (Space Grotesk)
+- `font-inter` — small UI text
 
-### Brand colors (Tailwind)
+### Brand colors
 
 ```
-miranda-red:  #C41E3A   (CTAs, accents, merch section bg)
-miranda-teal: #1DB5AD   (hero bg, section headers, mobile menu bg)
-miranda-dark: #1A1A1A   (dark sections, footer)
+miranda-red:   #C41E3A
+miranda-teal:  #1DB5AD
+miranda-dark:  #1A1A1A
+miranda-cream: (light bg for card sections)
 ```
 
-### Images
+### Media assets
 
-All photos are in `public/images/`. Named by purpose:
-- `logo.jpg` — circular logo, used in Navbar and Hero
-- `hero.png`, `about.png`, `about-chef.png`, `about-interior.png`, `neon.png`, `interior.png`, `lifestyle.png`
-- `menu-1.png` through `menu-6.png` — mapped 1:1 to `cafeConfig.menuItems`
+`public/images/` — all images served by Next.js `<Image>`. Real photos added from Instagram (named by content, e.g. `pancakes-berries.jpg`, `tapa-bacalao.jpg`, `ambiente-tapas.jpg`). Logos: `logo-principal.png` (transparent, 1080×1080, used everywhere) and `logo-secundario.png` (stacked red text, no bg).
 
-`next.config.js` only allows local images (no remote patterns). Don't add Unsplash URLs without updating the config.
+`public/videos/` — three Instagram Reels (`reel-1.mp4` 600KB, `reel-2.mp4` 1.4MB, `reel-3.mp4` 1.5MB). `reel-1.mp4` is the hero background. All three show in `HomeReels`.
+
+`archivosmiranda/` — source assets folder at project root. **Not served.** Raw files from the client (screenshots, Instagram exports). Copy from here to `public/` when adding new assets.
+
+`next.config.js` only allows local images — no remote URLs without updating it.
 
 ### SEO
 
-- `app/layout.tsx` — global metadata with `metadataBase`, OG tags, Twitter card, keywords array
-- `components/LocalBusinessSchema.tsx` — JSON-LD Restaurant schema injected in `<head>`, reads from `cafeConfig`
-- `app/sitemap.ts` and `app/robots.ts` — auto-generated, update sitemap when adding routes
+- `app/layout.tsx` — global metadata, OG tags, Twitter card
+- `components/LocalBusinessSchema.tsx` — JSON-LD Restaurant schema, reads from `cafeConfig`
+- `app/sitemap.ts` / `app/robots.ts` — update sitemap when adding routes
 
-### Reservations flow
+### WhatsApp reservations
 
-The reservation form in `ReservasSection` builds a WhatsApp message from form fields and opens `wa.me/` in a new tab. No backend, no email — intentional. The phone number format in `cafeConfig` must be `whatsapp: "34603319813"` (no `+`, no spaces).
+Phone in `cafeConfig` must be `whatsapp: "34603319813"` (no `+`, no spaces). The reservation form in `ReservasSection` builds a message string and opens `wa.me/` — no backend.
+
+### Deployment
+
+Vercel, auto-deploy on push to `main`. No environment variables needed.
