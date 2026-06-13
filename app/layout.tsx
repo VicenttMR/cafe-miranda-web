@@ -122,11 +122,6 @@ export default function RootLayout({
         <LocalBusinessSchema />
       </head>
       <body className="antialiased bg-white">
-        <div className="fixed top-0 left-0 right-0 z-[60] bg-white border-b border-gray-100 h-8 flex items-center justify-center">
-          <span className="font-grotesk text-[11px] font-medium tracking-[0.25em] uppercase text-miranda-dark">
-            Brunch · Tapas · Amor
-          </span>
-        </div>
         <Navbar />
         <main>{children}</main>
         <Footer />
