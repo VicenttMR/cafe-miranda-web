@@ -30,7 +30,7 @@ export default function AboutSection({ hideHeader = false }: { hideHeader?: bool
                   className="font-anton uppercase text-miranda-dark leading-none"
                   style={{ fontSize: "clamp(3.5rem, 7vw, 6rem)" }}
                 >
-                  MÁS QUE
+                  SOMOS LOS
                 </motion.h2>
               </div>
               <div className="overflow-hidden">
@@ -45,7 +45,7 @@ export default function AboutSection({ hideHeader = false }: { hideHeader?: bool
                     color: "transparent",
                   }}
                 >
-                  UN CAFÉ.
+                  LOCOS DEL BRUNCH.
                 </motion.h2>
               </div>
             </div>
@@ -56,9 +56,9 @@ export default function AboutSection({ hideHeader = false }: { hideHeader?: bool
               transition={{ duration: 0.6, delay: 0.3 }}
               className="font-grotesk text-lg text-miranda-gray leading-relaxed mb-5"
             >
-              Miranda nació con una sola idea: hacer el lugar donde la gente
-              quiera quedarse. No solo comer — sino volver, traer a sus amigos,
-              hacer del brunch un ritual.
+              Abrimos en Es Pujols porque queríamos el sitio que no existía:
+              un lugar donde el desayuno del sábado fuera el evento de la semana.
+              Sin prisa, con buena comida y con ganas de quedarse.
             </motion.p>
 
             <motion.p
@@ -67,24 +67,25 @@ export default function AboutSection({ hideHeader = false }: { hideHeader?: bool
               transition={{ duration: 0.6, delay: 0.4 }}
               className="font-grotesk text-base text-miranda-gray leading-relaxed mb-8"
             >
-              Ingredientes frescos, producto local, carta que cambia con la temporada.
-              Y siempre un equipo que pone el alma en cada plato.
+              Ocho temporadas después seguimos en lo mismo. Producto de mercado,
+              recetas con cariño y una carta que cambia cuando el género lo pide.
+              Lo que no cambia es el equipo — y las ganas.
             </motion.p>
 
-            {/* Solo años — sin fardar de reseñas */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.5 }}
-              className="flex items-center gap-4"
+              className="flex items-center gap-4 flex-wrap"
             >
               <div className="bg-white rounded-2xl px-6 py-4 border border-gray-100">
                 <p className="font-anton text-miranda-red text-5xl leading-none">8+</p>
-                <p className="font-grotesk text-sm text-miranda-gray mt-1">años en Formentera</p>
+                <p className="font-grotesk text-sm text-miranda-gray mt-1">temporadas abiertas</p>
               </div>
-              <p className="font-grotesk text-miranda-gray text-sm leading-relaxed max-w-[200px]">
-                Abiertos cada temporada con la misma energía del primer día.
-              </p>
+              <div className="bg-white rounded-2xl px-6 py-4 border border-gray-100">
+                <p className="font-anton text-miranda-teal text-5xl leading-none">100%</p>
+                <p className="font-grotesk text-sm text-miranda-gray mt-1">producto local</p>
+              </div>
             </motion.div>
           </motion.div>
 

@@ -69,6 +69,52 @@ export const cafeConfig = {
     showReservas: true,
   },
 
+  // Platos favoritos — mostrados en el home
+  favoritos: [
+    {
+      name: "Pancakes con Berries",
+      description: "La torre de pancakes que viene a buscarte cada verano. Con berries frescas, sirope de arce y nata montada.",
+      price: "12,50€",
+      image: "/images/menu-1.png",
+      badge: "El más pedido",
+    },
+    {
+      name: "Huevos Benedictinos",
+      description: "Clásico perfecto. Jamón ibérico, huevo poché y salsa holandesa. Sin trampa ni cartón.",
+      price: "11,00€",
+      image: "/images/menu-2.png",
+      badge: "Clásico",
+    },
+    {
+      name: "Tosta de Aguacate",
+      description: "Pan de masa madre tostado, aguacate, tomate cherry y un toque de lima. Simple y brutal.",
+      price: "9,50€",
+      image: "/images/menu-3.png",
+      badge: "Favorito",
+    },
+    {
+      name: "Hummus con Pulpo",
+      description: "Nuestro hummus casero con pulpo a la brasa. Una tapa que no olvidarás fácilmente.",
+      price: "8,00€",
+      image: "/images/menu-4.png",
+      badge: "Tapa estrella",
+    },
+    {
+      name: "Bowl de Açaí",
+      description: "Açaí, granola casera, frutas del tiempo y miel. El desayuno más instagrameable de Es Pujols.",
+      price: "10,00€",
+      image: "/images/menu-5.png",
+      badge: "Healthy",
+    },
+    {
+      name: "Gin Tónica Miranda",
+      description: "Gin premium, tónica artesanal, pepino y albahaca fresca. Para los que madrugaron poco.",
+      price: "9,00€",
+      image: "/images/menu-6.png",
+      badge: "Bebida favorita",
+    },
+  ],
+
   // Menú showcase — títulos e imágenes de los 6 platos estrella
   menuItems: [
     {
@@ -115,28 +161,28 @@ export const cafeConfig = {
       name: "Sophie M.",
       origin: "París, Francia",
       rating: 5,
-      text: "El mejor brunch de Formentera, sin duda. Los pancakes son increíbles y el ambiente es perfecto para empezar el día.",
+      text: "Los pancakes con berries son los mejores que he probado fuera de Nueva York. Volví dos veces en la misma semana.",
       avatar: "SM",
     },
     {
       name: "Carlos R.",
-      origin: "Barcelona, España",
+      origin: "Barcelona",
       rating: 5,
-      text: "Lugar único. Calidad premium, precios razonables y un equipo que pone el alma en cada plato. Volveremos.",
+      text: "El hummus con pulpo es una tapa que no olvidarás. Y el café, perfecto. Ya es tradición parar aquí cada verano.",
       avatar: "CR",
     },
     {
       name: "Emma K.",
-      origin: "Amsterdam, Países Bajos",
+      origin: "Amsterdam",
       rating: 5,
-      text: "Found this gem on our second day. The avocado toast and specialty coffee are outstanding. A must-visit!",
+      text: "Best brunch spot in Formentera, hands down. The avocado toast and the vibe are unbeatable. See you next summer.",
       avatar: "EK",
     },
     {
       name: "Marco T.",
       origin: "Milán, Italia",
-      rating: 4,
-      text: "Atmósfera inmejorable, comida deliciosa y servicio amable. El merch es un detalle genial para llevarse un recuerdo.",
+      rating: 5,
+      text: "Posto magico. Colazione, tapas, cocktail — tutto perfetto. L'atmosfera vale da sola la visita a Es Pujols.",
       avatar: "MT",
     },
   ],

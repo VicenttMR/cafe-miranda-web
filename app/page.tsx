@@ -1,5 +1,7 @@
 import HeroSection from "@/components/HeroSection";
 import HomeNav from "@/components/HomeNav";
+import HomeFavoritos from "@/components/HomeFavoritos";
+import TestimonialsSection from "@/components/TestimonialsSection";
 import HomeReservaCTA from "@/components/HomeReservaCTA";
 
 export default function HomePage() {
@@ -10,6 +12,8 @@ export default function HomePage() {
       </h1>
       <HeroSection />
       <HomeNav />
+      <HomeFavoritos />
+      <TestimonialsSection />
       <HomeReservaCTA />
     </>
   );
