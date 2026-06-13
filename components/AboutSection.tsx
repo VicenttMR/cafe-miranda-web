@@ -96,10 +96,10 @@ export default function AboutSection({ hideHeader = false }: { hideHeader?: bool
             transition={{ duration: 0.7, delay: 0.15 }}
             className="relative grid grid-cols-2 gap-3"
           >
-            {/* Main large photo — gente comiendo */}
+            {/* Main large photo */}
             <div className="col-span-2 relative aspect-[16/9] rounded-2xl overflow-hidden">
               <Image
-                src="/images/about.png"
+                src="/images/clientes-mesa.png"
                 alt="Clientes disfrutando en Café Miranda"
                 fill
                 className="object-cover"
@@ -107,13 +107,13 @@ export default function AboutSection({ hideHeader = false }: { hideHeader?: bool
               />
             </div>
 
-            {/* Chef */}
+            {/* Chef en cocina */}
             <div className="relative aspect-square rounded-2xl overflow-hidden">
               <Image
-                src="/images/about-chef.png"
-                alt="El equipo de Café Miranda"
+                src="/images/chef-cocina.jpg"
+                alt="El chef de Café Miranda"
                 fill
-                className="object-cover"
+                className="object-cover object-top"
                 sizes="25vw"
               />
             </div>
@@ -121,7 +121,7 @@ export default function AboutSection({ hideHeader = false }: { hideHeader?: bool
             {/* Neon sign */}
             <div className="relative aspect-square rounded-2xl overflow-hidden">
               <Image
-                src="/images/neon.png"
+                src="/images/neon-sign.png"
                 alt="You are my happy place — Café Miranda"
                 fill
                 className="object-cover"
@@ -139,8 +139,8 @@ export default function AboutSection({ hideHeader = false }: { hideHeader?: bool
       {/* Lifestyle strip — revista Tapas + máquina escribir */}
       <div className="relative h-64 overflow-hidden">
         <Image
-          src="/images/lifestyle.png"
-          alt="Vibes de Café Miranda — brunch, tapas y amor"
+          src="/images/ambiente-tapas.jpg"
+          alt="Mesa de tapas en Café Miranda — brunch, tapas y amor"
           fill
           className="object-cover object-center"
           sizes="100vw"

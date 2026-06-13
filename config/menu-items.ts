@@ -6,13 +6,13 @@ export const menuConfig = {
   hero: {
     title: "NUESTRO MENÚ",
     subtitle: "Comida que enamora",
-    image: "/images/hero.png",
+    image: "/images/ambiente-tapas.jpg",
   },
 
   categories: [
     {
       name: "DESAYUNOS",
-      image: "/images/menu-1.png",
+      image: "/images/cafe-croissant.png",
       items: [
         { name: "Café + Croissant", price: 6.50 },
         { name: "Tostadas Aguacate + Huevo", price: 8.50 },
@@ -22,7 +22,7 @@ export const menuConfig = {
     },
     {
       name: "BRUNCH",
-      image: "/images/menu-2.png",
+      image: "/images/pancakes-berries.jpg",
       items: [
         { name: "Pancakes Con Berries", price: 12.50 },
         { name: "Huevos Benedictinos", price: 13.00 },
@@ -32,7 +32,7 @@ export const menuConfig = {
     },
     {
       name: "TAPAS",
-      image: "/images/menu-5.png",
+      image: "/images/tapa-bacalao.jpg",
       items: [
         { name: "Hummus Con Pulpo", price: 8.00 },
         { name: "Berenjena Parmesana", price: 7.50 },
@@ -42,7 +42,7 @@ export const menuConfig = {
     },
     {
       name: "BEBIDAS",
-      image: "/images/menu-6.png",
+      image: "/images/vino-copa.jpg",
       items: [
         { name: "Café Especialidad", price: 4.50 },
         { name: "Smoothie Fruta Roja", price: 7.00 },
@@ -54,30 +54,30 @@ export const menuConfig = {
 
   destacado: {
     badge: "ESTRELLA DEL MENÚ",
-    name: "Pancakes Con Berries",
-    description: "Esponjosos pancakes con frambuesas frescas, miel casera, crema batida y polvo de canela. El plato que todos piden.",
+    name: "Pancakes Miranda",
+    description: "Esponjosos pancakes con frambuesas frescas, sirope de arce, crema batida y canela. El plato que todos piden — y repiten.",
     price: 12.50,
-    image: "/images/menu-1.png",
+    image: "/images/pancakes-berries.jpg",
     rating: 4.9,
     cta: "RESERVAR AHORA",
   },
 
   masonry: [
-    { image: "/images/menu-1.png", alt: "Brunch Miranda" },
-    { image: "/images/menu-2.png", alt: "Brunch dulce" },
-    { image: "/images/menu-3.png", alt: "Tapa del chef" },
-    { image: "/images/menu-4.png", alt: "Plato del día" },
-    { image: "/images/menu-5.png", alt: "Tapas selección" },
-    { image: "/images/menu-6.png", alt: "Bebidas" },
+    { image: "/images/pancakes-berries.jpg", alt: "Pancakes Miranda" },
+    { image: "/images/ambiente-tapas.jpg", alt: "Mesa de tapas Miranda" },
+    { image: "/images/tapa-bacalao.jpg", alt: "Milhoja de bacalao" },
+    { image: "/images/brioche-jamon.jpg", alt: "Brioche con jamón" },
+    { image: "/images/berenjena-asada.jpg", alt: "Berenjena asada" },
+    { image: "/images/tacos-pescado.jpg", alt: "Tacos de pescado" },
   ],
 
   secundario: {
     badge: "TAMBIÉN RECOMENDAMOS",
-    name: "Hummus Con Pulpo",
-    description: "Cremoso hummus con tentáculo de pulpo a la brasa, pimentón ahumado y aceite de oliva virgen extra. Un clásico reinventado.",
+    name: "Berenjena Asada",
+    description: "Berenjena a la brasa con yogur casero, nueces tostadas, semillas de granada y aceite de oliva. Una tapa que sorprende siempre.",
     price: 8.00,
-    image: "/images/menu-5.png",
-    rating: 4.6,
+    image: "/images/berenjena-asada.jpg",
+    rating: 4.7,
     cta: "RESERVAR AHORA",
   },
 

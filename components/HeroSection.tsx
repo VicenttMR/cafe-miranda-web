@@ -16,7 +16,20 @@ export default function HeroSection() {
   return (
     <section className="relative bg-miranda-teal overflow-hidden flex flex-col min-h-screen">
 
-      <div className="flex-1 flex flex-col justify-center px-6 sm:px-10 lg:px-16 pt-24 pb-12">
+      {/* Video background */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover"
+        style={{ opacity: 0.18 }}
+      >
+        <source src="/videos/reel-1.mp4" type="video/mp4" />
+      </video>
+      <div className="absolute inset-0 bg-miranda-teal/80" />
+
+      <div className="relative z-10 flex-1 flex flex-col justify-center px-6 sm:px-10 lg:px-16 pt-24 pb-12">
 
         <motion.div
           initial={{ opacity: 0, y: 16 }}
@@ -96,7 +109,7 @@ export default function HeroSection() {
       </div>
 
       {/* Ticker */}
-      <div className="bg-miranda-red py-3 overflow-hidden flex-shrink-0">
+      <div className="relative z-10 bg-miranda-red py-3 overflow-hidden flex-shrink-0">
         <motion.div
           animate={{ x: "-50%" }}
           transition={{ duration: 22, repeat: Infinity, ease: "linear" }}
