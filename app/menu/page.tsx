@@ -1,19 +1,21 @@
 import type { Metadata } from "next";
-import PageHeader from "@/components/PageHeader";
-import MenuShowcase from "@/components/MenuShowcase";
+import MenuHero from "@/components/MenuHero";
+import MenuGrid from "@/components/MenuGrid";
+import MenuFavorites from "@/components/MenuFavorites";
 import HomeReservaCTA from "@/components/HomeReservaCTA";
 
 export const metadata: Metadata = {
-  title: "Menú",
+  title: "Menú — Café Miranda",
   description:
-    "Carta completa de Café Miranda: brunch, desayunos, tapas, postres y bebidas en Es Pujols, Formentera.",
+    "Carta completa de Café Miranda: desayunos, brunch premium, tapas y bebidas en Es Pujols, Formentera. Reserva tu mesa ahora.",
 };
 
 export default function MenuPage() {
   return (
     <>
-      <PageHeader label="Lo que cocinamos" title="EL MENÚ" titleOutline="MIRANDA" bg="teal" />
-      <MenuShowcase hideHeader />
+      <MenuHero />
+      <MenuGrid />
+      <MenuFavorites />
       <HomeReservaCTA />
     </>
   );
