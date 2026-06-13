@@ -53,7 +53,7 @@ export default function HomeNav() {
           >
             <Link
               href={page.href}
-              className="group relative flex flex-col overflow-hidden aspect-[3/4] sm:aspect-square lg:aspect-[3/4]"
+              className="group relative flex flex-col overflow-hidden aspect-[4/3] sm:aspect-square lg:aspect-[3/4]"
             >
               {/* Photo background */}
               <Image
@@ -70,7 +70,7 @@ export default function HomeNav() {
               {/* Content */}
               <div className="relative z-10 flex flex-col justify-end h-full p-6 lg:p-8">
                 {/* Number */}
-                <span className="font-anton text-white/20 text-6xl leading-none mb-auto">
+                <span className="font-anton text-white/20 text-4xl sm:text-6xl leading-none mb-auto">
                   0{i + 1}
                 </span>
 

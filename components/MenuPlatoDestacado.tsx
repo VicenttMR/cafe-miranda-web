@@ -60,7 +60,7 @@ export default function MenuPlatoDestacado({
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.18 }}
-          className="md:w-1/2 flex flex-col justify-center px-8 py-14 lg:px-16 lg:py-20 bg-white"
+          className="md:w-1/2 flex flex-col justify-center px-6 py-10 sm:px-8 sm:py-12 lg:px-16 lg:py-20 bg-white"
         >
           <span className="font-grotesk font-bold text-[11px] uppercase tracking-[0.22em] text-miranda-red mb-5">
             {badge}

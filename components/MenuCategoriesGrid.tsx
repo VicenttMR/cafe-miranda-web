@@ -14,7 +14,7 @@ function CategoryCard({ category, index }: { category: Category; index: number }
       viewport={{ once: true, margin: "-40px" }}
       transition={{ duration: 0.55, delay: index * 0.12 }}
       className="relative overflow-hidden group cursor-default"
-      style={{ height: "clamp(300px, 38vw, 440px)" }}
+      style={{ height: "clamp(320px, 38vw, 440px)" }}
     >
       {/* Background photo */}
       <Image
@@ -37,7 +37,7 @@ function CategoryCard({ category, index }: { category: Category; index: number }
       <div className="absolute bottom-0 left-0 right-0 h-[3px] bg-miranda-red origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
 
       {/* Content */}
-      <div className="absolute inset-0 flex flex-col justify-center px-8 py-10">
+      <div className="absolute inset-0 flex flex-col justify-center px-6 py-8 sm:px-8 sm:py-10">
         <h2
           className="font-anton uppercase text-white text-center mb-7 leading-none"
           style={{ fontSize: "clamp(2rem, 4vw, 2.75rem)" }}

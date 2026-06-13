@@ -47,11 +47,11 @@ export default function HomeReservaCTA() {
             initial={{ opacity: 0, x: 20 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="flex flex-col sm:flex-row gap-3"
+            className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto"
           >
             <Link
               href="/reservas"
-              className="bg-miranda-red text-white font-grotesk font-semibold text-sm px-7 py-3.5 rounded-full hover:bg-miranda-red-dark transition-all hover:scale-[1.03]"
+              className="bg-miranda-red text-white font-grotesk font-semibold text-sm px-7 py-3.5 rounded-full hover:bg-miranda-red-dark transition-all hover:scale-[1.03] text-center"
             >
               Reservar online
             </Link>
@@ -59,7 +59,7 @@ export default function HomeReservaCTA() {
               href={`https://wa.me/${cafeConfig.whatsapp}?text=${encodeURIComponent(cafeConfig.whatsappMessage)}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-white text-miranda-teal font-grotesk font-semibold text-sm px-7 py-3.5 rounded-full hover:bg-miranda-cream transition-all hover:scale-[1.03]"
+              className="bg-white text-miranda-teal font-grotesk font-semibold text-sm px-7 py-3.5 rounded-full hover:bg-miranda-cream transition-all hover:scale-[1.03] text-center"
             >
               WhatsApp directo
             </a>
