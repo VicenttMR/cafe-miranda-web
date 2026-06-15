@@ -48,7 +48,7 @@ function DishCard({
           </p>
         )}
         <p
-          className={`font-anton uppercase text-white leading-tight ${
+          className={`font-anton uppercase text-white leading-tight line-clamp-2 ${
             isFeature ? "text-2xl mb-1.5" : "text-lg mb-1"
           }`}
         >
@@ -143,10 +143,13 @@ export default function HomeFavoritos() {
           </div>
         </div>
 
-        {/* Fila 2: 3 cards iguales */}
-        <div className="grid grid-cols-3 gap-3 lg:gap-4">
+        {/* Fila 2: 2 cards en móvil, 3 en sm+ */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 lg:gap-4">
           {items.slice(3, 6).map((item, i) => (
-            <div key={item.name} className="aspect-square">
+            <div
+              key={item.name}
+              className={`aspect-[4/3] sm:aspect-square ${i === 2 ? "hidden sm:block" : ""}`}
+            >
               <DishCard item={item} index={i + 3} />
             </div>
           ))}
