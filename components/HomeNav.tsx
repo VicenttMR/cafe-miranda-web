@@ -4,101 +4,133 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import { usePathname } from "next/navigation";
 
+// Mantén las mismas rutas e imágenes que tienes actualmente.
+// Solo cambia si quieres actualizar las fotos o los textos.
 const pages = [
   {
-    label: "Menú",
-    description: "Brunch, tapas, postres y bebidas",
     href: "/menu",
-    image: "/images/menu-1.png",
-    accent: "bg-miranda-red",
+    image: "/images/ambiente-tapas.jpg",
+    tag: "Desayunos · Brunch · Tapas",
+    title: "El Menú",
+    description: "Carta viva. Producto local. Sin artificios.",
   },
   {
-    label: "Nosotros",
-    description: "Quiénes somos y de dónde venimos",
     href: "/nosotros",
-    image: "/images/about.png",
-    accent: "bg-miranda-teal",
+    image: "/images/clientes-mesa.png",
+    tag: "Desde 2016",
+    title: "Nosotros",
+    description: "La historia de por qué abrimos — y por qué seguimos.",
   },
   {
-    label: "Merch",
-    description: "Gorras, camisetas y tote bags",
     href: "/merch",
-    image: "/images/interior.png",
-    accent: "bg-miranda-red",
+    image: "/images/neon-sign.png",
+    tag: "Shop Miranda",
+    title: "Merch",
+    description: "Gorras, camisetas y tote bags. Edición limitada.",
   },
   {
-    label: "Dónde estamos",
-    description: "Es Pujols, Formentera — cómo llegar",
     href: "/donde-estamos",
-    image: "/images/neon.png",
-    accent: "bg-miranda-teal",
+    image: "/images/about-interior.png",
+    tag: "Es Pujols, Formentera",
+    title: "Dónde estamos",
+    description: "Av. Miramar, 30. A dos minutos de la playa.",
   },
 ];
 
 export default function HomeNav() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-60px" });
+  const isInView = useInView(ref, { once: true, margin: "-80px" });
+  const pathname = usePathname();
 
   return (
-    <section className="bg-miranda-dark" ref={ref}>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
-        {pages.map((page, i) => (
-          <motion.div
-            key={page.href}
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.55, delay: i * 0.08 }}
-          >
-            <Link
-              href={page.href}
-              className="group relative flex flex-col overflow-hidden aspect-[4/3] sm:aspect-square lg:aspect-[3/4]"
-            >
-              {/* Photo background */}
-              <Image
-                src={page.image}
-                alt={page.label}
-                fill
-                className="object-cover transition-transform duration-700 group-hover:scale-110"
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-              />
+    <section className="bg-white" ref={ref}>
+      <div className="h-px bg-gray-100" />
 
-              {/* Dark overlay */}
-              <div className="absolute inset-0 bg-black/50 group-hover:bg-black/30 transition-all duration-500" />
+      <div className="container-max px-4 sm:px-6 lg:px-8 py-14 lg:py-20">
 
-              {/* Content */}
-              <div className="relative z-10 flex flex-col justify-end h-full p-6 lg:p-8">
-                {/* Number */}
-                <span className="font-anton text-white/20 text-4xl sm:text-6xl leading-none mb-auto">
-                  0{i + 1}
-                </span>
+        {/* Label */}
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.5 }}
+          className="font-grotesk text-[11px] uppercase tracking-[0.28em] text-miranda-gray mb-8"
+        >
+          Explora
+        </motion.p>
 
-                <div>
-                  <p className="font-grotesk text-white/60 text-xs uppercase tracking-widest mb-2">
-                    {page.description}
-                  </p>
-                  <h2 className="font-anton uppercase text-white leading-none mb-4"
-                      style={{ fontSize: "clamp(2rem, 4vw, 3rem)" }}>
-                    {page.label}
-                  </h2>
+        {/* Grid de secciones */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-4">
+          {pages.map((page, i) => {
+            const isActive = pathname === page.href;
+            return (
+              <motion.div
+                key={page.href}
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.5, delay: i * 0.07 }}
+              >
+                <Link
+                  href={page.href}
+                  className={`group relative flex flex-col overflow-hidden rounded-2xl aspect-[4/3] sm:aspect-square lg:aspect-[3/4] ${
+                    isActive ? "ring-2 ring-miranda-teal" : ""
+                  }`}
+                >
+                  {/* Foto */}
+                  <Image
+                    src={page.image}
+                    alt={page.title}
+                    fill
+                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.05]"
+                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 50vw, 25vw"
+                  />
 
-                  <div className={`inline-flex items-center gap-2 ${page.accent} text-white
-                                   font-grotesk font-semibold text-xs px-4 py-2 rounded-full
-                                   translate-y-2 opacity-0 group-hover:opacity-100 group-hover:translate-y-0
-                                   transition-all duration-300`}>
-                    Ver más
-                    <ArrowUpRight className="w-3.5 h-3.5" />
+                  {/* Overlay base */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-black/10" />
+
+                  {/* Overlay teal en hover */}
+                  <div className="absolute inset-0 bg-miranda-teal/0 group-hover:bg-miranda-teal/15 transition-colors duration-300" />
+
+                  {/* Contenido */}
+                  <div className="relative z-10 flex flex-col justify-end h-full p-4 lg:p-5">
+
+                    {/* Tag pequeño */}
+                    <p className="font-grotesk text-[10px] uppercase tracking-wider text-white/55 mb-1.5">
+                      {page.tag}
+                    </p>
+
+                    {/* Título */}
+                    <h3 className="font-anton uppercase text-white leading-tight text-xl lg:text-2xl mb-2">
+                      {page.title}
+                    </h3>
+
+                    {/* Descripción — solo visible en sm+ */}
+                    <p className="font-grotesk text-white/65 text-xs leading-snug mb-3 hidden sm:block">
+                      {page.description}
+                    </p>
+
+                    {/* Arrow — aparece en hover */}
+                    <div className="flex items-center gap-2 overflow-hidden">
+                      <div className="h-px bg-white flex-1 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out" />
+                      <svg
+                        className="w-4 h-4 text-white flex-shrink-0 translate-x-0 group-hover:translate-x-0.5 transition-transform duration-300"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        strokeWidth={2.5}
+                        aria-hidden
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                      </svg>
+                    </div>
                   </div>
-                </div>
-              </div>
 
-              {/* Bottom accent line */}
-              <div className={`absolute bottom-0 left-0 right-0 h-1 ${page.accent}
-                               scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left`} />
-            </Link>
-          </motion.div>
-        ))}
+                </Link>
+              </motion.div>
+            );
+          })}
+        </div>
       </div>
     </section>
   );

@@ -66,7 +66,7 @@ export default function PageHeader({
         </div>
 
         {titleOutline && (
-          <div className="overflow-hidden">
+          <div className="overflow-hidden mt-1">
             <motion.h1
               initial={{ y: "100%" }}
               animate={{ y: 0 }}
