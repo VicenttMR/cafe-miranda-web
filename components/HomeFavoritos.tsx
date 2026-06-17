@@ -8,54 +8,68 @@ import { cafeConfig } from "@/config/cafe-miranda";
 
 type Favorito = (typeof cafeConfig.favoritos)[0];
 
-function DishCard({
-  item,
-  index,
-  variant = "square",
-}: {
-  item: Favorito;
-  index: number;
-  variant?: "feature" | "square";
-}) {
-  const isFeature = variant === "feature";
-
+function DishCard({ item, index }: { item: Favorito; index: number }) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 24 }}
+      initial={{ opacity: 0, y: 40 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.55, delay: index * 0.07 }}
-      className="group relative overflow-hidden rounded-2xl w-full h-full"
+      transition={{ duration: 0.65, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
     >
-      <Image
-        src={item.image}
-        alt={item.name}
-        fill
-        className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
-        sizes={isFeature ? "(max-width: 768px) 100vw, 50vw" : "33vw"}
-      />
+      <Link
+        href="/menu"
+        className="group relative block overflow-hidden rounded-2xl aspect-[3/4] cursor-pointer"
+      >
+        {/* Photo — the composed image with text block + food */}
+        <Image
+          src={item.image}
+          alt={item.name}
+          fill
+          className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+          sizes="(max-width: 768px) 100vw, 50vw"
+        />
 
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent" />
+        {/* Colored accent top bar — slides in on hover */}
+        <div
+          className="absolute top-0 inset-x-0 h-[4px] origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out z-10"
+          style={{ backgroundColor: item.accentColor }}
+        />
 
-      {/* Teal top accent — grows on hover */}
-      <div className="absolute inset-x-0 top-0 h-[3px] bg-miranda-teal origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out" />
+        {/* Bottom CTA — slides up on hover */}
+        <div className="absolute inset-x-0 bottom-0 z-10 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]">
+          <div className="bg-gradient-to-t from-black/85 via-black/60 to-transparent pt-16 pb-6 px-6">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="font-anton uppercase text-white text-xl leading-tight tracking-wide">
+                  {item.name}
+                </p>
+                {item.subtitle && (
+                  <p className="font-grotesk text-white/70 text-xs mt-0.5 leading-snug">
+                    {item.subtitle}
+                  </p>
+                )}
+              </div>
+              <div
+                className="flex-shrink-0 w-9 h-9 rounded-full flex items-center justify-center ml-4"
+                style={{ backgroundColor: item.accentColor }}
+              >
+                <svg
+                  className="w-4 h-4 text-white"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={2.5}
+                  aria-hidden
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
 
-      {/* Content */}
-      <div className="absolute bottom-0 left-0 right-0 p-4 lg:p-5">
-        {isFeature && (
-          <p className="font-grotesk text-white/65 text-sm leading-snug mb-2 line-clamp-2">
-            {item.description}
-          </p>
-        )}
-        <p
-          className={`font-anton uppercase text-white leading-tight line-clamp-2 ${
-            isFeature ? "text-2xl mb-1.5" : "text-lg mb-1"
-          }`}
-        >
-          {item.name}
-        </p>
-        <p className="font-grotesk text-miranda-teal font-medium text-sm">{item.price}</p>
-      </div>
+        {/* Subtle dark vignette — always present at bottom edge */}
+        <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/40 to-transparent pointer-events-none" />
+      </Link>
     </motion.div>
   );
 }
@@ -75,6 +89,7 @@ export default function HomeFavoritos() {
             <motion.p
               initial={{ opacity: 0 }}
               animate={isInView ? { opacity: 1 } : {}}
+              transition={{ duration: 0.5 }}
               className="font-grotesk text-[11px] uppercase tracking-[0.28em] text-miranda-gray mb-3"
             >
               Lo que pide todo el mundo
@@ -122,36 +137,10 @@ export default function HomeFavoritos() {
           </motion.div>
         </div>
 
-        {/* Editorial grid — dos filas */}
-
-        {/* Fila 1: Feature (50% ancho) + 2 apiladas (50% ancho) */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 lg:gap-4 mb-3 lg:mb-4">
-
-          {/* Feature card — ocupa toda la altura de la fila */}
-          <div className="aspect-[4/3] lg:aspect-auto" style={{ minHeight: "clamp(280px, 38vw, 480px)" }}>
-            <DishCard item={items[0]} index={0} variant="feature" />
-          </div>
-
-          {/* 2 cards apiladas a la derecha */}
-          <div className="grid grid-cols-2 lg:grid-cols-1 gap-3 lg:gap-4">
-            <div className="aspect-square lg:aspect-auto" style={{ minHeight: "clamp(130px, 18vw, 228px)" }}>
-              <DishCard item={items[1]} index={1} />
-            </div>
-            <div className="aspect-square lg:aspect-auto" style={{ minHeight: "clamp(130px, 18vw, 228px)" }}>
-              <DishCard item={items[2]} index={2} />
-            </div>
-          </div>
-        </div>
-
-        {/* Fila 2: 2 cards en móvil, 3 en sm+ */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 lg:gap-4">
-          {items.slice(3, 6).map((item, i) => (
-            <div
-              key={item.name}
-              className={`aspect-[4/3] sm:aspect-square ${i === 2 ? "hidden sm:block" : ""}`}
-            >
-              <DishCard item={item} index={i + 3} />
-            </div>
+        {/* 2×2 grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-5">
+          {items.map((item, i) => (
+            <DishCard key={item.name} item={item} index={i} />
           ))}
         </div>
 
