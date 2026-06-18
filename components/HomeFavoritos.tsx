@@ -113,23 +113,25 @@ function DishCard({
           <motion.div
             variants={labelVariants}
             className="absolute top-0 inset-x-0 z-20 overflow-hidden"
-            style={{ height: "47%", backgroundColor: item.accentColor }}
+            style={{ height: "52%", backgroundColor: item.accentColor }}
           >
-            <Image
-              src={item.textoImage}
-              alt=""
-              fill
-              className="object-cover object-top"
-              aria-hidden
-              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-            />
+            <div className="absolute inset-0 scale-[1.4] origin-top">
+              <Image
+                src={item.textoImage}
+                alt=""
+                fill
+                className="object-cover object-top"
+                aria-hidden
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+              />
+            </div>
           </motion.div>
 
           {/* ── Accent divider ── */}
           <motion.div
             variants={dividerVariants}
             className="absolute z-30 inset-x-0 h-[3px] origin-left"
-            style={{ top: "47%", backgroundColor: item.accentColor }}
+            style={{ top: "52%", backgroundColor: item.accentColor }}
           />
 
           {/* ── Hover CTA ── */}
