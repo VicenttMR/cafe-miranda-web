@@ -15,21 +15,21 @@ const photoVariants: Variants = {
   hover: { scale: 1.07, transition: { duration: 0.8, ease: "easeOut" } },
 };
 
-// Label wipes in top-to-bottom with clipPath
+// Label slides down from above — card overflow-hidden acts as clip
 const labelVariants: Variants = {
   rest: {
-    clipPath: "inset(0% 0% 100% 0%)",
+    y: "-100%",
     transition: { duration: 0.38, ease: [0.7, 0, 0.84, 0] },
   },
   hover: {
-    clipPath: "inset(0% 0% 0% 0%)",
+    y: "0%",
     transition: { duration: 0.55, ease: [0.16, 1, 0.3, 1] },
   },
 };
 
 const dividerVariants: Variants = {
-  rest: { scaleX: 0, transition: { duration: 0.2 } },
-  hover: { scaleX: 1, transition: { duration: 0.35, delay: 0.38, ease: "easeOut" } },
+  rest: { scaleX: 0, opacity: 0, transition: { duration: 0.2 } },
+  hover: { scaleX: 1, opacity: 1, transition: { duration: 0.35, delay: 0.38, ease: "easeOut" } },
 };
 
 const ctaVariants: Variants = {
@@ -81,9 +81,10 @@ function DishCard({
           {/* Subtle vignette — only visible at bottom edge in rest state */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent pointer-events-none" />
 
-          {/* ── CSS label — wipes down on hover ── */}
+          {/* ── CSS label — slides down on hover ── */}
           <motion.div
             variants={labelVariants}
+            initial={{ y: "-100%" }}
             className="absolute top-0 inset-x-0 z-20 flex flex-col items-center justify-center gap-2 px-5"
             style={{ height: "52%", backgroundColor: item.accentColor }}
           >
@@ -109,6 +110,7 @@ function DishCard({
           {/* ── Accent divider ── */}
           <motion.div
             variants={dividerVariants}
+            initial={{ scaleX: 0, opacity: 0 }}
             className="absolute z-30 inset-x-0 h-[3px] origin-left"
             style={{ top: "52%", backgroundColor: item.accentColor }}
           />
@@ -116,6 +118,7 @@ function DishCard({
           {/* ── Hover CTA ── */}
           <motion.div
             variants={ctaVariants}
+            initial={{ y: 18, opacity: 0 }}
             className="absolute bottom-0 inset-x-0 z-20 px-5 pb-5"
           >
             <div className="flex items-center gap-3">
