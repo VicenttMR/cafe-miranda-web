@@ -37,11 +37,6 @@ const ctaVariants: Variants = {
   hover: { y: 0, opacity: 1, transition: { duration: 0.4, delay: 0.22, ease: [0.16, 1, 0.3, 1] } },
 };
 
-const nameFadeVariants: Variants = {
-  rest: { opacity: 1, y: 0, transition: { duration: 0.25 } },
-  hover: { opacity: 0, y: 6, transition: { duration: 0.18 } },
-};
-
 // ─── Card ────────────────────────────────────────────────────────────────────
 
 function DishCard({
@@ -83,31 +78,8 @@ function DishCard({
             />
           </motion.div>
 
-          {/* Permanent gradient — bottom 55% dark vignette */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent pointer-events-none" />
-
-          {/* ── Card number (editorial) ── */}
-          <div className="absolute top-4 left-4 z-10 font-grotesk text-white/30 text-[10px] tracking-[0.22em] uppercase select-none">
-            {String(index + 1).padStart(2, "0")} / 04
-          </div>
-
-          {/* ── Rest state: dish name ── */}
-          <motion.div
-            variants={nameFadeVariants}
-            className="absolute bottom-0 inset-x-0 z-10 px-5 pb-5 pt-10"
-          >
-            <h3
-              className="font-anton uppercase text-white leading-tight"
-              style={{ fontSize: "clamp(1.15rem, 1.8vw, 1.4rem)" }}
-            >
-              {item.name}
-            </h3>
-            {item.subtitle && (
-              <p className="font-grotesk text-white/55 text-xs mt-1 leading-snug">
-                {item.subtitle}
-              </p>
-            )}
-          </motion.div>
+          {/* Subtle vignette — only visible at bottom edge in rest state */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent pointer-events-none" />
 
           {/* ── CSS label — wipes down on hover ── */}
           <motion.div
