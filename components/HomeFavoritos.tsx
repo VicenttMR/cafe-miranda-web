@@ -109,22 +109,29 @@ function DishCard({
             )}
           </motion.div>
 
-          {/* ── Texto label — wipes down on hover ── */}
+          {/* ── CSS label — wipes down on hover ── */}
           <motion.div
             variants={labelVariants}
-            className="absolute top-0 inset-x-0 z-20 overflow-hidden"
+            className="absolute top-0 inset-x-0 z-20 flex flex-col items-center justify-center gap-2 px-5"
             style={{ height: "52%", backgroundColor: item.accentColor }}
           >
-            <div className="absolute inset-0 scale-[1.4] origin-top">
-              <Image
-                src={item.textoImage}
-                alt=""
-                fill
-                className="object-cover object-top"
-                aria-hidden
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-              />
-            </div>
+            <h3
+              className="font-anton uppercase text-center leading-tight"
+              style={{ fontSize: "clamp(1.15rem, 1.8vw, 1.45rem)", color: item.labelTextColor }}
+            >
+              {item.name}
+            </h3>
+            {item.subtitle && (
+              <>
+                <div className="w-8 h-px" style={{ backgroundColor: item.labelTextColor, opacity: 0.4 }} />
+                <p
+                  className="font-grotesk text-center leading-snug"
+                  style={{ fontSize: "clamp(0.65rem, 1vw, 0.75rem)", color: item.labelTextColor, opacity: 0.8 }}
+                >
+                  {item.subtitle}
+                </p>
+              </>
+            )}
           </motion.div>
 
           {/* ── Accent divider ── */}
