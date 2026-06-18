@@ -11,8 +11,8 @@ type Favorito = (typeof cafeConfig.favoritos)[0];
 // ─── Variants ────────────────────────────────────────────────────────────────
 
 const photoVariants: Variants = {
-  rest: { scale: 1, transition: { duration: 0.8, ease: "easeOut" } },
-  hover: { scale: 1.07, transition: { duration: 0.8, ease: "easeOut" } },
+  rest: { scale: 2, transition: { duration: 0.8, ease: "easeOut" } },
+  hover: { scale: 2.14, transition: { duration: 0.8, ease: "easeOut" } },
 };
 
 // Label slides down from above — card overflow-hidden acts as clip
@@ -67,12 +67,12 @@ function DishCard({
         >
 
           {/* ── Food photo ── */}
-          <motion.div variants={photoVariants} className="absolute inset-0 will-change-transform">
+          <motion.div variants={photoVariants} className="absolute inset-0 will-change-transform" style={{ transformOrigin: "bottom center" }}>
             <Image
               src={item.image}
               alt={item.name}
               fill
-              className="object-cover object-bottom"
+              className="object-cover"
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
               priority={index < 2}
             />
