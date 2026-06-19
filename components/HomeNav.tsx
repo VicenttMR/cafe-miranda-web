@@ -94,7 +94,7 @@ export default function HomeNav() {
                   <div
                     className="absolute inset-0 transition-opacity duration-300"
                     style={{
-                      background: `linear-gradient(to top, ${page.color}f2 0%, ${page.color}99 45%, transparent 75%)`,
+                      background: `linear-gradient(to top, ${page.color}99 0%, ${page.color}44 45%, transparent 72%)`,
                     }}
                   />
 

@@ -6,9 +6,9 @@ import { Instagram, Play } from "lucide-react";
 import { cafeConfig } from "@/config/cafe-miranda";
 
 const reels = [
-  { src: "/videos/reel-1.mp4" },
-  { src: "/videos/reel-2.mp4" },
-  { src: "/videos/reel-3.mp4" },
+  { src: "/videos/reel-1.mp4", color: "#1DB5AD" },
+  { src: "/videos/reel-2.mp4", color: "#C41E3A" },
+  { src: "/videos/reel-3.mp4", color: "#1DB5AD" },
 ];
 
 export default function HomeReels() {
@@ -84,8 +84,13 @@ export default function HomeReels() {
               <source src={reel.src} type="video/mp4" />
             </video>
 
-            {/* Overlay con logo IG */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+            {/* Colored gradient overlay */}
+            <div
+              className="absolute inset-0"
+              style={{
+                background: `linear-gradient(to top, ${reel.color}99 0%, ${reel.color}44 45%, transparent 72%)`,
+              }}
+            />
             <div className="absolute bottom-4 left-4">
               <div className="flex items-center gap-1.5 bg-white/10 backdrop-blur-sm rounded-full px-3 py-1.5">
                 <Play className="w-3 h-3 fill-white text-white" />

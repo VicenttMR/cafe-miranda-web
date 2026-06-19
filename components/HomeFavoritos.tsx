@@ -62,7 +62,7 @@ function DesktopCard({ item, index, isInView }: { item: Favorito; index: number;
             initial={{ opacity: 0 }}
             className="absolute inset-0 pointer-events-none"
             style={{
-              background: `linear-gradient(to top, ${item.accentColor}f2 0%, ${item.accentColor}99 45%, transparent 75%)`,
+              background: `linear-gradient(to top, ${item.accentColor}99 0%, ${item.accentColor}44 45%, transparent 72%)`,
             }}
           />
 
@@ -146,7 +146,7 @@ function MobileCard({ item, index, isInView }: { item: Favorito; index: number; 
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
-            background: `linear-gradient(to top, ${item.accentColor}f2 0%, ${item.accentColor}99 45%, transparent 75%)`,
+            background: `linear-gradient(to top, ${item.accentColor}99 0%, ${item.accentColor}44 45%, transparent 72%)`,
           }}
         />
 
