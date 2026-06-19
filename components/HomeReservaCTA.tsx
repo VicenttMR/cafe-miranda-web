@@ -34,7 +34,7 @@ export default function HomeReservaCTA() {
                 className="font-anton uppercase leading-none"
                 style={{
                   fontSize: "clamp(2.5rem, 6vw, 5.5rem)",
-                  WebkitTextStroke: "3px white",
+                  WebkitTextStroke: "var(--stroke-w) white",
                   color: "transparent",
                 }}
               >

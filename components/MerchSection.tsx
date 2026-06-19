@@ -92,7 +92,7 @@ export default function MerchSection({ hideHeader = false }: { hideHeader?: bool
                 className="font-anton uppercase leading-none"
                 style={{
                   fontSize: "clamp(3rem, 7vw, 6rem)",
-                  WebkitTextStroke: "3px white",
+                  WebkitTextStroke: "var(--stroke-w) white",
                   color: "transparent",
                 }}
               >

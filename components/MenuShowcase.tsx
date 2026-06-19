@@ -53,7 +53,7 @@ export default function MenuShowcase({ hideHeader = false }: { hideHeader?: bool
                   className="font-anton uppercase leading-none"
                   style={{
                     fontSize: "clamp(3rem, 8vw, 7rem)",
-                    WebkitTextStroke: "3px white",
+                    WebkitTextStroke: "var(--stroke-w) white",
                     color: "transparent",
                   }}
                 >

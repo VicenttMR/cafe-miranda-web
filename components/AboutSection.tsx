@@ -41,7 +41,7 @@ export default function AboutSection({ hideHeader = false }: { hideHeader?: bool
                   className="font-anton uppercase leading-none"
                   style={{
                     fontSize: "clamp(3.5rem, 7vw, 6rem)",
-                    WebkitTextStroke: "3px #C41E3A",
+                    WebkitTextStroke: "var(--stroke-w) #C41E3A",
                     color: "transparent",
                   }}
                 >

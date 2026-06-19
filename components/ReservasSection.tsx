@@ -75,7 +75,7 @@ export default function ReservasSection({ hideHeader = false }: { hideHeader?: b
                 className="font-anton uppercase leading-none"
                 style={{
                   fontSize: "clamp(3rem, 7vw, 6rem)",
-                  WebkitTextStroke: "3px #1DB5AD",
+                  WebkitTextStroke: "var(--stroke-w) #1DB5AD",
                   color: "transparent",
                 }}
               >

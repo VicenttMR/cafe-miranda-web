@@ -74,7 +74,7 @@ export default function PageHeader({
               className="font-anton uppercase leading-none"
               style={{
                 fontSize: "clamp(3.5rem, 10vw, 9rem)",
-                WebkitTextStroke: `3px ${strokeColor}`,
+                WebkitTextStroke: `var(--stroke-w) ${strokeColor}`,
                 color: "transparent",
               }}
             >

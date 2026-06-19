@@ -61,7 +61,7 @@ export default function HeroSection() {
             className="font-anton uppercase leading-none"
             style={{
               fontSize: "clamp(5rem, 16vw, 14rem)",
-              WebkitTextStroke: "4px white",
+              WebkitTextStroke: "var(--stroke-w) white",
               color: "transparent",
             }}
           >

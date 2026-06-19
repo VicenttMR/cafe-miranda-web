@@ -29,6 +29,11 @@
     --miranda-red: #C41E3A;
     --miranda-teal: #1DB5AD;
     --miranda-dark: #1A1A1A;
+    /* Text stroke width — thin on mobile, full on desktop */
+    --stroke-w: 1.5px;
+  }
+  @media (min-width: 1024px) {
+    :root { --stroke-w: 3px; }
   }
 
   html {

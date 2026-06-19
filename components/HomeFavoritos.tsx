@@ -211,7 +211,7 @@ export default function HomeFavoritos() {
                 className="font-anton uppercase leading-none"
                 style={{
                   fontSize: "clamp(2.5rem, 6vw, 5rem)",
-                  WebkitTextStroke: "3px #C41E3A",
+                  WebkitTextStroke: "var(--stroke-w) #C41E3A",
                   color: "transparent",
                 }}
               >
