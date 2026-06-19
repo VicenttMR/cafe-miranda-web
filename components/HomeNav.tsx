@@ -49,8 +49,8 @@ export default function HomeNav() {
   const pathname = usePathname();
 
   return (
-    <section className="bg-white" ref={ref}>
-      <div className="h-px bg-gray-100" />
+    <section className="bg-miranda-cream" ref={ref}>
+      <div className="h-px bg-miranda-dark/8" />
 
       <div className="container-max px-4 sm:px-6 lg:px-8 py-14 lg:py-20">
 
