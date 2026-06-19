@@ -173,7 +173,7 @@ export default function LocationSection({ hideHeader = false }: { hideHeader?: b
           >
             <div className="rounded-3xl overflow-hidden shadow-xl border border-gray-100 aspect-[4/3] lg:aspect-auto lg:h-[480px]">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3082.996!2d1.421!3d38.657!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12990e4c80f8f44d%3A0x1!2sAv.+Miramar%2C+30%2C+07871+Es+Pujols!5e0!3m2!1ses!2ses!4v1700000000000!5m2!1ses!2ses"
+                src={cafeConfig.googleMapsEmbed}
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}

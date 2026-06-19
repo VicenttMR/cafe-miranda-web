@@ -22,17 +22,17 @@ export const cafeConfig = {
   // Ubicación
   address: "Av. Miramar, 30, 07871 Es Pujols, Illes Balears",
   city: "Es Pujols, Formentera",
-  coordinates: { lat: 38.657, lng: 1.421 },
-  googleMapsUrl: "https://maps.app.goo.gl/cafemiranda",
+  coordinates: { lat: 38.7235194, lng: 1.4576397 },
+  googleMapsUrl: "https://www.google.com/maps/place/Café+Miranda/@38.7235194,1.4576397,17z/data=!3m1!4b1!4m6!3m5!1s0x12995ea6b6be4577:0x81f7eb5bf1d536e0!8m2!3d38.7235194!4d1.4576397!16s%2Fg%2F11c45td3b0",
   googleMapsEmbed:
-    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3082.9!2d1.421!3d38.657!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sCaf%C3%A9+Miranda!5e0!3m2!1ses!2ses!4v1234567890",
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2995.83!2d1.4558726!3d38.7235194!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12995ea6b6be4577%3A0x81f7eb5bf1d536e0!2sCaf%C3%A9+Miranda!5e0!3m2!1ses!2ses!4v1718736000000!5m2!1ses!2ses",
 
   // Redes sociales
   instagram: "cafemirandaformentera",
   instagramUrl: "https://www.instagram.com/cafemirandaformentera",
   tripadvisor: "",
   googleReviews:
-    "https://search.google.com/local/reviews?placeid=cafemiranda",
+    "https://www.google.com/maps/place/Café+Miranda/@38.7235194,1.4576397,17z/data=!4m8!3m7!1s0x12995ea6b6be4577:0x81f7eb5bf1d536e0!8m2!3d38.7235194!4d1.4576397!9m1!1b1",
 
   // Estadísticas visibles
   reviewCount: "633",
