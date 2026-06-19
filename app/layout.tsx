@@ -7,7 +7,6 @@ import Footer from "@/components/Footer";
 import LocalBusinessSchema from "@/components/LocalBusinessSchema";
 import AnnouncementBar from "@/components/AnnouncementBar";
 import RotatingStamp from "@/components/RotatingStamp";
-import PageTransition from "@/components/PageTransition";
 
 const anton = Anton({
   subsets: ["latin"],
@@ -128,9 +127,7 @@ export default function RootLayout({
         <RotatingStamp />
         <AnnouncementBar />
         <Navbar />
-        <main>
-          <PageTransition>{children}</PageTransition>
-        </main>
+        <main>{children}</main>
         <Footer />
       </body>
     </html>
