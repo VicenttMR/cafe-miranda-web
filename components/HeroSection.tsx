@@ -108,17 +108,16 @@ export default function HeroSection() {
         </motion.div>
       </div>
 
-      {/* Ticker */}
+      {/* Ticker — CSS animation so it never pauses */}
       <div className="relative z-10 bg-miranda-red py-3 overflow-hidden flex-shrink-0">
-        <motion.div
-          animate={{ x: "-50%" }}
-          transition={{ duration: 22, repeat: Infinity, ease: "linear" }}
+        <div
           className="flex gap-8 whitespace-nowrap w-max"
+          style={{ animation: "ticker-hero 22s linear infinite" }}
         >
           {[...TICKER_WORDS, ...TICKER_WORDS].map((word, i) => (
             <span key={i} className="font-anton uppercase text-white text-lg tracking-wider">{word}</span>
           ))}
-        </motion.div>
+        </div>
       </div>
 
     </section>

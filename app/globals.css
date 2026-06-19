@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Section ticker — CSS animation never pauses on tab blur */
+/* Tickers — CSS animations run on compositor, never pause on tab blur */
 @keyframes ticker-left {
   from { transform: translateX(0); }
   to   { transform: translateX(-25%); }
@@ -10,6 +10,11 @@
 @keyframes ticker-right {
   from { transform: translateX(0); }
   to   { transform: translateX(25%); }
+}
+/* Hero ticker uses 2 copies → -50% */
+@keyframes ticker-hero {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
 }
 
 /* Hide default cursor on mouse devices — CustomCursor takes over */

@@ -79,6 +79,7 @@ export default function HomeReels() {
               loop
               muted
               playsInline
+              preload="none"
               className="absolute inset-0 w-full h-full object-cover"
             >
               <source src={reel.src} type="video/mp4" />
