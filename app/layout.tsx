@@ -6,6 +6,10 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import LocalBusinessSchema from "@/components/LocalBusinessSchema";
 import AnnouncementBar from "@/components/AnnouncementBar";
+import GrainOverlay from "@/components/GrainOverlay";
+import CustomCursor from "@/components/CustomCursor";
+import RotatingStamp from "@/components/RotatingStamp";
+import PageTransition from "@/components/PageTransition";
 
 const anton = Anton({
   subsets: ["latin"],
@@ -123,9 +127,14 @@ export default function RootLayout({
         <LocalBusinessSchema />
       </head>
       <body className="antialiased bg-white">
+        <GrainOverlay />
+        <CustomCursor />
+        <RotatingStamp />
         <AnnouncementBar />
         <Navbar />
-        <main>{children}</main>
+        <main>
+          <PageTransition>{children}</PageTransition>
+        </main>
         <Footer />
       </body>
     </html>

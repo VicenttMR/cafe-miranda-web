@@ -4,6 +4,7 @@ import HomeFavoritos from "@/components/HomeFavoritos";
 import HomeReels from "@/components/HomeReels";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import HomeReservaCTA from "@/components/HomeReservaCTA";
+import SectionTicker from "@/components/SectionTicker";
 
 export default function HomePage() {
   return (
@@ -13,8 +14,17 @@ export default function HomePage() {
       </h1>
       <HeroSection />
       <HomeNav />
+      <SectionTicker
+        words={["COCINA HONESTA", "·", "PRODUCTO LOCAL", "·", "SIN ARTIFICIOS", "·", "TEMPORADA", "·", "ES PUJOLS", "·"]}
+        bg="cream"
+      />
       <HomeFavoritos />
       <HomeReels />
+      <SectionTicker
+        words={["RESERVA TU MESA", "·", "LLÁMANOS", "·", "ESTAMOS AQUÍ", "·", "TODOS LOS DÍAS", "·", "FORMENTERA", "·"]}
+        bg="teal"
+        reverse
+      />
       <TestimonialsSection />
       <HomeReservaCTA />
     </>
