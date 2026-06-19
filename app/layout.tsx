@@ -7,7 +7,6 @@ import Footer from "@/components/Footer";
 import LocalBusinessSchema from "@/components/LocalBusinessSchema";
 import AnnouncementBar from "@/components/AnnouncementBar";
 import GrainOverlay from "@/components/GrainOverlay";
-import CustomCursor from "@/components/CustomCursor";
 import RotatingStamp from "@/components/RotatingStamp";
 import PageTransition from "@/components/PageTransition";
 
@@ -128,7 +127,6 @@ export default function RootLayout({
       </head>
       <body className="antialiased bg-white">
         <GrainOverlay />
-        <CustomCursor />
         <RotatingStamp />
         <AnnouncementBar />
         <Navbar />
