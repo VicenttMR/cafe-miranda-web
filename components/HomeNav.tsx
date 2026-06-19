@@ -15,6 +15,7 @@ const pages = [
     tag: "Desayunos · Brunch · Tapas",
     title: "El Menú",
     description: "Carta viva. Producto local. Sin artificios.",
+    color: "#C41E3A",
   },
   {
     href: "/nosotros",
@@ -22,6 +23,7 @@ const pages = [
     tag: "Desde 2016",
     title: "Nosotros",
     description: "La historia de por qué abrimos — y por qué seguimos.",
+    color: "#1DB5AD",
   },
   {
     href: "/merch",
@@ -29,6 +31,7 @@ const pages = [
     tag: "Shop Miranda",
     title: "Merch",
     description: "Gorras, camisetas y tote bags. Edición limitada.",
+    color: "#C41E3A",
   },
   {
     href: "/donde-estamos",
@@ -36,6 +39,7 @@ const pages = [
     tag: "Es Pujols, Formentera",
     title: "Dónde estamos",
     description: "Av. Miramar, 30. A dos minutos de la playa.",
+    color: "#1DB5AD",
   },
 ];
 
@@ -86,11 +90,13 @@ export default function HomeNav() {
                     sizes="(max-width: 640px) 50vw, (max-width: 1024px) 50vw, 25vw"
                   />
 
-                  {/* Overlay base */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-black/10" />
-
-                  {/* Overlay teal en hover */}
-                  <div className="absolute inset-0 bg-miranda-teal/0 group-hover:bg-miranda-teal/15 transition-colors duration-300" />
+                  {/* Colored gradient overlay */}
+                  <div
+                    className="absolute inset-0 transition-opacity duration-300"
+                    style={{
+                      background: `linear-gradient(to top, ${page.color}f2 0%, ${page.color}99 45%, transparent 75%)`,
+                    }}
+                  />
 
                   {/* Contenido */}
                   <div className="relative z-10 flex flex-col justify-end h-full p-4 lg:p-5">
