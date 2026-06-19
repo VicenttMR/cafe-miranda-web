@@ -141,35 +141,35 @@ export const cafeConfig = {
     },
   ],
 
-  // Testimonios — reemplaza con reviews reales de Google
+  // Testimonios — reseñas reales de Google Maps
   testimonials: [
     {
-      name: "Sophie M.",
-      origin: "París, Francia",
+      name: "Cristian Pallarés",
+      origin: "Local Guide · Google Maps",
       rating: 5,
-      text: "Los pancakes con berries son los mejores que he probado fuera de Nueva York. Volví dos veces en la misma semana.",
-      avatar: "SM",
+      text: "Los zumos espectaculares. 100% fruta, sin bases preparadas. Son italianos, así que el café también de diez. Podrían cobrarte el doble o el triple y estarían en línea con algunos locales de Es Pujols.",
+      avatar: "CP",
     },
     {
-      name: "Carlos R.",
-      origin: "Barcelona",
+      name: "Daniela Barcia",
+      origin: "Local Guide · Google Maps",
       rating: 5,
-      text: "El hummus con pulpo es una tapa que no olvidarás. Y el café, perfecto. Ya es tradición parar aquí cada verano.",
-      avatar: "CR",
+      text: "Excelente lugar para desayunar. Rápido y buenos precios. Variedad, opciones saludables y un café de especialidad espectacular. ¡Fuimos 2 días seguidos! Lo bueno se repite.",
+      avatar: "DB",
     },
     {
-      name: "Emma K.",
-      origin: "Amsterdam",
+      name: "Mané Campos",
+      origin: "Local Guide · Google Maps",
       rating: 5,
-      text: "Best brunch spot in Formentera, hands down. The avocado toast and the vibe are unbeatable. See you next summer.",
-      avatar: "EK",
+      text: "Fantástica acogida desde que llegamos. Muy rico el hummus con pulpo, el trío de tartar de pescado — lubina, salmón y atún — exquisito. El postre, un semifrío de chocolate al amaretto, espectacular.",
+      avatar: "MC",
     },
     {
-      name: "Marco T.",
-      origin: "Milán, Italia",
+      name: "Álvaro López",
+      origin: "Local Guide · Google Maps",
       rating: 5,
-      text: "Posto magico. Colazione, tapas, cocktail — tutto perfetto. L'atmosfera vale da sola la visita a Es Pujols.",
-      avatar: "MT",
+      text: "Muy muy satisfecho con el servicio, la comida y el precio. Por fin, un sitio en Formentera que no exagere los precios. Calidad de comida y muy buen trato de todo su staff.",
+      avatar: "AL",
     },
   ],
 

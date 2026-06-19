@@ -46,7 +46,7 @@ export default function LocationSection({ hideHeader = false }: { hideHeader?: b
           </span>
           <h2 className="section-title mb-4">
             Estamos en{" "}
-            <span className="text-miranda-teal font-playfair italic font-normal">
+            <span className="text-miranda-teal font-grotesk italic font-normal">
               Es Pujols
             </span>
           </h2>
@@ -71,7 +71,7 @@ export default function LocationSection({ hideHeader = false }: { hideHeader?: b
                   <MapPin className="w-5 h-5 text-miranda-red" />
                 </div>
                 <div>
-                  <h3 className="font-poppins font-semibold text-miranda-dark mb-1">
+                  <h3 className="font-grotesk font-semibold text-miranda-dark mb-1">
                     Dirección
                   </h3>
                   <p className="font-inter text-miranda-gray text-sm leading-relaxed">
@@ -81,7 +81,7 @@ export default function LocationSection({ hideHeader = false }: { hideHeader?: b
                     href={cafeConfig.googleMapsUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 mt-2 text-xs font-poppins font-semibold text-miranda-teal hover:underline"
+                    className="inline-flex items-center gap-1.5 mt-2 text-xs font-grotesk font-semibold text-miranda-teal hover:underline"
                   >
                     Abrir en Google Maps
                     <ExternalLink className="w-3 h-3" />
@@ -94,7 +94,7 @@ export default function LocationSection({ hideHeader = false }: { hideHeader?: b
                   <Phone className="w-5 h-5 text-miranda-teal" />
                 </div>
                 <div>
-                  <h3 className="font-poppins font-semibold text-miranda-dark mb-1">
+                  <h3 className="font-grotesk font-semibold text-miranda-dark mb-1">
                     Teléfono
                   </h3>
                   <a
@@ -111,7 +111,7 @@ export default function LocationSection({ hideHeader = false }: { hideHeader?: b
                   <Clock className="w-5 h-5 text-miranda-red" />
                 </div>
                 <div>
-                  <h3 className="font-poppins font-semibold text-miranda-dark mb-2">
+                  <h3 className="font-grotesk font-semibold text-miranda-dark mb-2">
                     Horario
                   </h3>
                   {Object.entries(cafeConfig.hours).map(([day, hours]) => (
@@ -136,7 +136,7 @@ export default function LocationSection({ hideHeader = false }: { hideHeader?: b
             <div className="card p-6">
               <div className="flex items-center gap-2 mb-4">
                 <Navigation className="w-5 h-5 text-miranda-teal" />
-                <h3 className="font-poppins font-semibold text-miranda-dark">
+                <h3 className="font-grotesk font-semibold text-miranda-dark">
                   Cómo llegar
                 </h3>
               </div>
@@ -155,7 +155,7 @@ export default function LocationSection({ hideHeader = false }: { hideHeader?: b
                         {d.how}
                       </p>
                     </div>
-                    <span className="font-poppins font-bold text-miranda-red text-sm">
+                    <span className="font-grotesk font-bold text-miranda-red text-sm">
                       {d.time}
                     </span>
                   </div>
