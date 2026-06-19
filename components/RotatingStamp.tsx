@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export default function RotatingStamp() {
   return (
-    <div className="fixed bottom-7 right-7 z-40 hidden lg:flex items-center justify-center w-24 h-24">
+    <div className="fixed bottom-5 right-5 z-40 flex items-center justify-center w-16 h-16 lg:w-24 lg:h-24">
       {/* Rotating ring with text */}
       <motion.div
         className="absolute inset-0 text-miranda-dark"

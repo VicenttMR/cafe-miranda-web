@@ -1,7 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
-
 interface SectionTickerProps {
   words: string[];
   bg?: "cream" | "dark" | "red" | "teal";
@@ -27,15 +25,16 @@ export default function SectionTicker({
   bg = "cream",
   reverse = false,
 }: SectionTickerProps) {
+  // 4 copies so the loop jump is invisible
   const repeated = [...words, ...words, ...words, ...words];
 
   return (
     <div className={`${bgMap[bg]} py-2.5 overflow-hidden`}>
-      <motion.div
-        initial={{ x: "0%" }}
-        animate={{ x: reverse ? "25%" : "-25%" }}
-        transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+      <div
         className="flex gap-8 whitespace-nowrap w-max"
+        style={{
+          animation: `${reverse ? "ticker-right" : "ticker-left"} 30s linear infinite`,
+        }}
       >
         {repeated.map((word, i) => (
           <span
@@ -45,7 +44,7 @@ export default function SectionTicker({
             {word}
           </span>
         ))}
-      </motion.div>
+      </div>
     </div>
   );
 }

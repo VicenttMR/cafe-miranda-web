@@ -2,6 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Section ticker — CSS animation never pauses on tab blur */
+@keyframes ticker-left {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-25%); }
+}
+@keyframes ticker-right {
+  from { transform: translateX(0); }
+  to   { transform: translateX(25%); }
+}
+
 /* Hide default cursor on mouse devices — CustomCursor takes over */
 @media (hover: hover) and (pointer: fine) {
   *, *::before, *::after {
