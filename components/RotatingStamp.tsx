@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export default function RotatingStamp() {
   return (
@@ -32,9 +33,15 @@ export default function RotatingStamp() {
         </svg>
       </motion.div>
 
-      {/* Static center */}
-      <div className="relative z-10 w-7 h-7 rounded-full bg-miranda-red flex items-center justify-center">
-        <span className="font-anton text-white text-[10px] leading-none">M</span>
+      {/* Static center — logo secundario */}
+      <div className="relative z-10 w-10 h-10 lg:w-14 lg:h-14">
+        <Image
+          src="/images/logo-secundario.png"
+          alt="Café Miranda"
+          fill
+          className="object-contain"
+          sizes="56px"
+        />
       </div>
     </div>
   );
