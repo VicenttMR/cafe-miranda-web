@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useInView, Variants } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { cafeConfig } from "@/config/cafe-miranda";
@@ -48,6 +48,20 @@ function DishCard({
   index: number;
   isInView: boolean;
 }) {
+  const [revealed, setRevealed] = useState(false);
+  const [isTouch, setIsTouch] = useState(false);
+
+  useEffect(() => {
+    setIsTouch(window.matchMedia("(hover: none) and (pointer: coarse)").matches);
+  }, []);
+
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (isTouch && !revealed) {
+      e.preventDefault();
+      setRevealed(true);
+    }
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 50 }}
@@ -56,12 +70,13 @@ function DishCard({
     >
       <motion.div
         initial="rest"
-        animate="rest"
-        whileHover="hover"
+        animate={isTouch ? (revealed ? "hover" : "rest") : "rest"}
+        whileHover={isTouch ? undefined : "hover"}
         className="group"
       >
         <Link
           href="/menu"
+          onClick={handleClick}
           className="relative block overflow-hidden rounded-2xl aspect-[3/4] select-none"
           aria-label={`Ver ${item.name} en la carta`}
         >
