@@ -32,29 +32,45 @@ export default function LocationSection({ hideHeader = false }: { hideHeader?: b
   void hideHeader;
 
   return (
-    <section id="ubicacion" className="section-padding bg-white">
-      <div className="container-max" ref={ref}>
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-14"
-        >
-          <span className="tag bg-miranda-red/10 text-miranda-red mb-4 inline-block">
+    <section id="ubicacion" className="bg-white">
+      <div className="container-max px-4 sm:px-6 lg:px-8 py-16 lg:py-24" ref={ref}>
+        {/* Header — editorial */}
+        <div className="mb-14">
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={isInView ? { opacity: 1 } : {}}
+            transition={{ duration: 0.5 }}
+            className="font-grotesk text-[11px] uppercase tracking-[0.28em] text-miranda-gray mb-3"
+          >
             Encuéntranos
-          </span>
-          <h2 className="section-title mb-4">
-            Estamos en{" "}
-            <span className="text-miranda-teal font-grotesk italic font-normal">
-              Es Pujols
-            </span>
-          </h2>
-          <p className="section-subtitle max-w-xl mx-auto">
-            En el corazón del pueblo, a dos minutos de la playa. Búscanos, es
-            fácil encontrarnos.
-          </p>
-        </motion.div>
+          </motion.p>
+          <div className="overflow-hidden">
+            <motion.h2
+              initial={{ y: "110%" }}
+              animate={isInView ? { y: 0 } : {}}
+              transition={{ duration: 0.65 }}
+              className="font-anton uppercase text-miranda-dark leading-none"
+              style={{ fontSize: "clamp(2.5rem, 6vw, 5rem)" }}
+            >
+              ESTAMOS EN
+            </motion.h2>
+          </div>
+          <div className="overflow-hidden">
+            <motion.h2
+              initial={{ y: "110%" }}
+              animate={isInView ? { y: 0 } : {}}
+              transition={{ duration: 0.65, delay: 0.07 }}
+              className="font-anton uppercase leading-none"
+              style={{
+                fontSize: "clamp(2.5rem, 6vw, 5rem)",
+                WebkitTextStroke: "var(--stroke-w) #1DB5AD",
+                color: "transparent",
+              }}
+            >
+              ES PUJOLS.
+            </motion.h2>
+          </div>
+        </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 items-start">
           {/* Left info */}

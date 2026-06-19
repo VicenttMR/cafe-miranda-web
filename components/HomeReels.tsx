@@ -6,9 +6,9 @@ import { Instagram, Play } from "lucide-react";
 import { cafeConfig } from "@/config/cafe-miranda";
 
 const reels = [
-  { src: "/videos/reel-1.mp4" },
-  { src: "/videos/reel-2.mp4" },
-  { src: "/videos/reel-3.mp4" },
+  { src: "/videos/reel-1.mp4", poster: "/images/ambiente-tapas.jpg" },
+  { src: "/videos/reel-2.mp4", poster: "/images/pancakes-berries.jpg" },
+  { src: "/videos/reel-3.mp4", poster: "/images/tapa-bacalao.jpg" },
 ];
 
 export default function HomeReels() {
@@ -80,6 +80,7 @@ export default function HomeReels() {
               muted
               playsInline
               preload="none"
+              poster={reel.poster}
               className="absolute inset-0 w-full h-full object-cover"
             >
               <source src={reel.src} type="video/mp4" />

@@ -175,10 +175,10 @@ export const cafeConfig = {
 
   // Merch
   merch: [
-    { name: "Gorra Miranda", price: "€25", emoji: "🧢" },
-    { name: "Camiseta Classic", price: "€35", emoji: "👕" },
-    { name: "Tote Bag", price: "€20", emoji: "👜" },
-    { name: "Pack Combo", price: "€55", emoji: "🎁" },
+    { name: "Gorra Miranda", price: "€25" },
+    { name: "Camiseta Classic", price: "€35" },
+    { name: "Tote Bag", price: "€20" },
+    { name: "Pack Combo", price: "€55" },
   ],
 };
 

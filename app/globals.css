@@ -16,6 +16,11 @@
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }
 }
+/* Announcement bar — same pattern as hero ticker */
+@keyframes ticker-announcement {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
 
 @layer base {
   :root {

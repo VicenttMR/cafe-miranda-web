@@ -110,13 +110,10 @@ export default function MerchSection({ hideHeader = false }: { hideHeader?: bool
               {cafeConfig.merch.map((item) => (
                 <div
                   key={item.name}
-                  className="flex items-center gap-3 bg-white/10 rounded-xl p-3"
+                  className="bg-white/10 rounded-xl p-4"
                 >
-                  <span className="text-2xl">{item.emoji}</span>
-                  <div>
-                    <p className="font-grotesk font-semibold text-white text-sm">{item.name}</p>
-                    <p className="font-anton text-miranda-teal text-xl leading-none">{item.price}</p>
-                  </div>
+                  <p className="font-grotesk font-semibold text-white text-sm mb-1">{item.name}</p>
+                  <p className="font-anton text-miranda-teal text-2xl leading-none">{item.price}</p>
                 </div>
               ))}
             </div>
