@@ -32,8 +32,8 @@ export default function SectionTicker({
   return (
     <div className={`${bgMap[bg]} py-2.5 overflow-hidden`}>
       <motion.div
+        initial={{ x: "0%" }}
         animate={{ x: reverse ? "25%" : "-25%" }}
-        initial={{ x: reverse ? "-25%" : "0%" }}
         transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
         className="flex gap-8 whitespace-nowrap w-max"
       >
