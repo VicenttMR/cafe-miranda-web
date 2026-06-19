@@ -1,166 +1,154 @@
 "use client";
 
 import { motion, useInView, Variants } from "framer-motion";
-import { useRef, useState, useEffect } from "react";
+import { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { cafeConfig } from "@/config/cafe-miranda";
 
 type Favorito = (typeof cafeConfig.favoritos)[0];
 
-// ─── Variants ────────────────────────────────────────────────────────────────
+// ─── Desktop variants — gradient rises from bottom ────────────────────────────
 
-const photoVariants: Variants = {
-  rest: { scale: 2, transition: { duration: 0.8, ease: "easeOut" } },
-  hover: { scale: 2.14, transition: { duration: 0.8, ease: "easeOut" } },
+const desktopPhotoVariants: Variants = {
+  rest: { scale: 2, transition: { duration: 0.75, ease: "easeOut" } },
+  hover: { scale: 2.1, transition: { duration: 0.75, ease: "easeOut" } },
 };
 
-// Label slides down from above — card overflow-hidden acts as clip
-const labelVariants: Variants = {
-  rest: {
-    y: "-100%",
-    transition: { duration: 0.38, ease: [0.7, 0, 0.84, 0] },
-  },
-  hover: {
-    y: "0%",
-    transition: { duration: 0.55, ease: [0.16, 1, 0.3, 1] },
-  },
+const desktopOverlayVariants: Variants = {
+  rest: { opacity: 0, transition: { duration: 0.3 } },
+  hover: { opacity: 1, transition: { duration: 0.4, ease: "easeOut" } },
 };
 
-const dividerVariants: Variants = {
-  rest: { scaleX: 0, opacity: 0, transition: { duration: 0.2 } },
-  hover: { scaleX: 1, opacity: 1, transition: { duration: 0.35, delay: 0.38, ease: "easeOut" } },
+const desktopTextVariants: Variants = {
+  rest: { y: 20, opacity: 0, transition: { duration: 0.25 } },
+  hover: { y: 0, opacity: 1, transition: { duration: 0.45, delay: 0.08, ease: [0.16, 1, 0.3, 1] } },
 };
 
-const ctaVariants: Variants = {
-  rest: { y: 18, opacity: 0, transition: { duration: 0.2 } },
-  hover: { y: 0, opacity: 1, transition: { duration: 0.4, delay: 0.22, ease: [0.16, 1, 0.3, 1] } },
-};
+// ─── Desktop Card ─────────────────────────────────────────────────────────────
 
-// ─── Card ────────────────────────────────────────────────────────────────────
-
-function DishCard({
-  item,
-  index,
-  isInView,
-}: {
-  item: Favorito;
-  index: number;
-  isInView: boolean;
-}) {
-  const [revealed, setRevealed] = useState(false);
-  const [isTouch, setIsTouch] = useState(false);
-
-  useEffect(() => {
-    setIsTouch(window.matchMedia("(hover: none) and (pointer: coarse)").matches);
-  }, []);
-
-  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    if (isTouch && !revealed) {
-      e.preventDefault();
-      setRevealed(true);
-    }
-  };
-
+function DesktopCard({ item, index, isInView }: { item: Favorito; index: number; isInView: boolean }) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 50 }}
+      initial={{ opacity: 0, y: 40 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.7, delay: index * 0.11, ease: [0.16, 1, 0.3, 1] }}
+      transition={{ duration: 0.65, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
     >
-      <motion.div
-        initial="rest"
-        animate={isTouch ? (revealed ? "hover" : "rest") : "rest"}
-        whileHover={isTouch ? undefined : "hover"}
-        className="group"
-      >
+      <motion.div initial="rest" animate="rest" whileHover="hover">
         <Link
           href="/menu"
-          onClick={handleClick}
           className="relative block overflow-hidden rounded-2xl aspect-[3/4] select-none"
           aria-label={`Ver ${item.name} en la carta`}
         >
-
-          {/* ── Food photo ── */}
-          <motion.div variants={photoVariants} className="absolute inset-0 will-change-transform" style={{ transformOrigin: "bottom center" }}>
+          {/* Photo — scale:2 origin-bottom hides white top of image */}
+          <motion.div
+            variants={desktopPhotoVariants}
+            className="absolute inset-0 will-change-transform"
+            style={{ transformOrigin: "bottom center" }}
+          >
             <Image
               src={item.image}
               alt={item.name}
               fill
               className="object-cover"
-              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+              sizes="25vw"
               priority={index < 2}
             />
           </motion.div>
 
-          {/* Subtle vignette — only visible at bottom edge in rest state */}
+          {/* Permanent subtle vignette */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent pointer-events-none" />
 
-          {/* ── CSS label — slides down on hover ── */}
+          {/* Hover gradient overlay */}
           <motion.div
-            variants={labelVariants}
-            initial={{ y: "-100%" }}
-            className="absolute top-0 inset-x-0 z-20 flex flex-col items-center justify-center gap-2 px-5"
-            style={{ height: "52%", backgroundColor: item.accentColor }}
+            variants={desktopOverlayVariants}
+            initial={{ opacity: 0 }}
+            className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent pointer-events-none"
+          />
+
+          {/* Text — slides up on hover */}
+          <motion.div
+            variants={desktopTextVariants}
+            initial={{ y: 20, opacity: 0 }}
+            className="absolute bottom-0 inset-x-0 z-10 px-5 pb-6"
           >
             <h3
-              className="font-anton uppercase text-center leading-tight"
-              style={{ fontSize: "clamp(1.15rem, 1.8vw, 1.45rem)", color: item.labelTextColor }}
+              className="font-anton uppercase text-white leading-tight mb-1"
+              style={{ fontSize: "clamp(1.1rem, 1.6vw, 1.35rem)" }}
             >
               {item.name}
             </h3>
             {item.subtitle && (
-              <>
-                <div className="w-8 h-px" style={{ backgroundColor: item.labelTextColor, opacity: 0.4 }} />
-                <p
-                  className="font-grotesk text-center leading-snug"
-                  style={{ fontSize: "clamp(0.65rem, 1vw, 0.75rem)", color: item.labelTextColor, opacity: 0.8 }}
-                >
-                  {item.subtitle}
-                </p>
-              </>
+              <p className="font-grotesk text-white/65 text-xs leading-snug mb-3">
+                {item.subtitle}
+              </p>
             )}
-          </motion.div>
-
-          {/* ── Accent divider ── */}
-          <motion.div
-            variants={dividerVariants}
-            initial={{ scaleX: 0, opacity: 0 }}
-            className="absolute z-30 inset-x-0 h-[3px] origin-left"
-            style={{ top: "52%", backgroundColor: item.accentColor }}
-          />
-
-          {/* ── Hover CTA ── */}
-          <motion.div
-            variants={ctaVariants}
-            initial={{ y: 18, opacity: 0 }}
-            className="absolute bottom-0 inset-x-0 z-20 px-5 pb-5"
-          >
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2 mt-2">
               <div className="h-px bg-white/35 flex-1" />
-              <span className="font-grotesk text-white/90 text-[10px] uppercase tracking-[0.22em] whitespace-nowrap">
+              <span className="font-grotesk text-white/80 text-[10px] uppercase tracking-[0.22em] whitespace-nowrap">
                 Ver en carta
               </span>
               <div
-                className="w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0"
+                className="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0"
                 style={{ backgroundColor: item.accentColor }}
               >
-                <svg
-                  className="w-3.5 h-3.5 text-white"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={2.5}
-                  aria-hidden
-                >
+                <svg className="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5} aria-hidden>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
                 </svg>
               </div>
             </div>
           </motion.div>
-
         </Link>
       </motion.div>
+    </motion.div>
+  );
+}
+
+// ─── Mobile Card (carousel) ───────────────────────────────────────────────────
+
+function MobileCard({ item, index, isInView }: { item: Favorito; index: number; isInView: boolean }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, x: 24 }}
+      animate={isInView ? { opacity: 1, x: 0 } : {}}
+      transition={{ duration: 0.55, delay: index * 0.08, ease: [0.16, 1, 0.3, 1] }}
+      className="flex-shrink-0 w-[72vw] sm:w-[280px] snap-start"
+    >
+      <Link
+        href="/menu"
+        className="relative block overflow-hidden rounded-2xl select-none"
+        style={{ aspectRatio: "3/4" }}
+        aria-label={`Ver ${item.name} en la carta`}
+      >
+        {/* Photo — scale:2 origin-bottom hides white top */}
+        <div className="absolute inset-0 will-change-transform" style={{ transform: "scale(2)", transformOrigin: "bottom center" }}>
+          <Image
+            src={item.image}
+            alt={item.name}
+            fill
+            className="object-cover"
+            sizes="80vw"
+          />
+        </div>
+
+        {/* Permanent gradient */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent pointer-events-none" />
+
+        {/* Always-visible text */}
+        <div className="absolute bottom-0 inset-x-0 z-10 px-4 pb-5">
+          <h3
+            className="font-anton uppercase text-white leading-tight"
+            style={{ fontSize: "1.25rem" }}
+          >
+            {item.name}
+          </h3>
+          {item.subtitle && (
+            <p className="font-grotesk text-white/65 text-xs leading-snug mt-1">
+              {item.subtitle}
+            </p>
+          )}
+        </div>
+      </Link>
     </motion.div>
   );
 }
@@ -221,7 +209,7 @@ export default function HomeFavoritos() {
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : {}}
             transition={{ delay: 0.45 }}
-            className="hidden sm:block flex-shrink-0"
+            className="hidden lg:block flex-shrink-0"
           >
             <Link
               href="/menu"
@@ -232,15 +220,26 @@ export default function HomeFavoritos() {
           </motion.div>
         </div>
 
-        {/* ── Grid: 1 col → 2×2 → 4 cols ── */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-4">
+        {/* ── Desktop Grid (lg+) ── */}
+        <div className="hidden lg:grid grid-cols-4 gap-4">
           {items.map((item, i) => (
-            <DishCard key={item.name} item={item} index={i} isInView={isInView} />
+            <DesktopCard key={item.name} item={item} index={i} isInView={isInView} />
           ))}
         </div>
 
+        {/* ── Mobile Carousel (< lg) ── */}
+        <div className="lg:hidden -mx-4 sm:-mx-6">
+          <div className="flex overflow-x-auto snap-x snap-mandatory scrollbar-none gap-4 px-4 sm:px-6 pb-2">
+            {items.map((item, i) => (
+              <MobileCard key={item.name} item={item} index={i} isInView={isInView} />
+            ))}
+            {/* Trailing spacer so last card has breathing room */}
+            <div className="flex-shrink-0 w-4 sm:w-6" aria-hidden />
+          </div>
+        </div>
+
         {/* CTA móvil */}
-        <div className="mt-8 sm:hidden text-center">
+        <div className="mt-8 lg:hidden text-center">
           <Link
             href="/menu"
             className="inline-flex items-center gap-2 bg-miranda-red text-white font-grotesk font-semibold text-sm px-7 py-3.5 rounded-full hover:bg-miranda-red-dark transition-all"
