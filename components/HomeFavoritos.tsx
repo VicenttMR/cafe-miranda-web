@@ -56,14 +56,14 @@ function DesktopCard({ item, index, isInView }: { item: Favorito; index: number;
             />
           </motion.div>
 
-          {/* Permanent subtle vignette */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent pointer-events-none" />
-
-          {/* Hover gradient overlay */}
+          {/* Hover gradient overlay — uses dish accent color */}
           <motion.div
             variants={desktopOverlayVariants}
             initial={{ opacity: 0 }}
-            className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent pointer-events-none"
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              background: `linear-gradient(to top, ${item.accentColor}f2 0%, ${item.accentColor}99 45%, transparent 75%)`,
+            }}
           />
 
           {/* Text — slides up on hover */}
@@ -73,26 +73,37 @@ function DesktopCard({ item, index, isInView }: { item: Favorito; index: number;
             className="absolute bottom-0 inset-x-0 z-10 px-5 pb-6"
           >
             <h3
-              className="font-anton uppercase text-white leading-tight mb-1"
-              style={{ fontSize: "clamp(1.1rem, 1.6vw, 1.35rem)" }}
+              className="font-anton uppercase leading-tight mb-1"
+              style={{ fontSize: "clamp(1.1rem, 1.6vw, 1.35rem)", color: item.labelTextColor }}
             >
               {item.name}
             </h3>
             {item.subtitle && (
-              <p className="font-grotesk text-white/65 text-xs leading-snug mb-3">
+              <p className="font-grotesk text-xs leading-snug mb-3" style={{ color: item.labelTextColor, opacity: 0.8 }}>
                 {item.subtitle}
               </p>
             )}
             <div className="flex items-center gap-2 mt-2">
-              <div className="h-px bg-white/35 flex-1" />
-              <span className="font-grotesk text-white/80 text-[10px] uppercase tracking-[0.22em] whitespace-nowrap">
+              <div className="h-px flex-1" style={{ backgroundColor: item.labelTextColor, opacity: 0.35 }} />
+              <span
+                className="font-grotesk text-[10px] uppercase tracking-[0.22em] whitespace-nowrap"
+                style={{ color: item.labelTextColor, opacity: 0.85 }}
+              >
                 Ver en carta
               </span>
               <div
                 className="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0"
-                style={{ backgroundColor: item.accentColor }}
+                style={{ backgroundColor: item.labelTextColor }}
               >
-                <svg className="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5} aria-hidden>
+                <svg
+                  className="w-3 h-3"
+                  style={{ color: item.accentColor }}
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={2.5}
+                  aria-hidden
+                >
                   <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
                 </svg>
               </div>
@@ -131,19 +142,24 @@ function MobileCard({ item, index, isInView }: { item: Favorito; index: number; 
           />
         </div>
 
-        {/* Permanent gradient */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent pointer-events-none" />
+        {/* Permanent gradient — uses dish accent color */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background: `linear-gradient(to top, ${item.accentColor}f2 0%, ${item.accentColor}99 45%, transparent 75%)`,
+          }}
+        />
 
         {/* Always-visible text */}
         <div className="absolute bottom-0 inset-x-0 z-10 px-4 pb-5">
           <h3
-            className="font-anton uppercase text-white leading-tight"
-            style={{ fontSize: "1.25rem" }}
+            className="font-anton uppercase leading-tight"
+            style={{ fontSize: "1.25rem", color: item.labelTextColor }}
           >
             {item.name}
           </h3>
           {item.subtitle && (
-            <p className="font-grotesk text-white/65 text-xs leading-snug mt-1">
+            <p className="font-grotesk text-xs leading-snug mt-1" style={{ color: item.labelTextColor, opacity: 0.8 }}>
               {item.subtitle}
             </p>
           )}
