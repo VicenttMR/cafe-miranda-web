@@ -109,7 +109,7 @@ export default function Footer() {
             © {year} Café Miranda · Es Pujols, Formentera
           </p>
           <p className="font-grotesk text-xs text-white/20">
-            Diseño web · Studio Digital
+            Diseño web · Vicent Moragues
           </p>
         </div>
       </div>
