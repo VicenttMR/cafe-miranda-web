@@ -13,14 +13,14 @@ function CategoryCard({ category, index }: { category: Category; index: number }
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-40px" }}
       transition={{ duration: 0.55, delay: index * 0.12 }}
-      className="relative overflow-hidden group cursor-default"
+      className="relative overflow-hidden cursor-default"
     >
       {/* Background photo — absolute, covers full card height */}
       <Image
         src={category.image}
         alt={category.name}
         fill
-        className="object-cover transition-transform duration-700 group-hover:scale-105"
+        className="object-cover"
         sizes="(max-width: 768px) 100vw, 50vw"
       />
 
@@ -28,12 +28,9 @@ function CategoryCard({ category, index }: { category: Category; index: number }
       <div className="absolute inset-0 bg-black/55" />
       {/* Teal overlay */}
       <div
-        className="absolute inset-0 transition-opacity duration-300 group-hover:opacity-80"
+        className="absolute inset-0"
         style={{ backgroundColor: "rgba(29,181,173,0.38)" }}
       />
-
-      {/* Red bottom line grows on hover */}
-      <div className="absolute bottom-0 left-0 right-0 h-[3px] bg-miranda-red origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
 
       {/* Content — in normal flow so card grows to fit items */}
       <div

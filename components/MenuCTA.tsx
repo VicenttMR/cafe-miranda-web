@@ -13,7 +13,7 @@ export default function MenuCTA() {
   )}`;
 
   return (
-    <section ref={ref} className="bg-white py-20 px-4 sm:px-6">
+    <section ref={ref} className="bg-miranda-light py-20 px-4 sm:px-6">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -30,23 +30,14 @@ export default function MenuCTA() {
           {menuConfig.cta.subheadline}
         </p>
 
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          {/* Outline — carta completa */}
-          <a
-            href="#"
-            className="btn-outline text-miranda-teal border-miranda-teal w-full sm:w-auto hover:bg-miranda-teal hover:text-white"
-          >
-            {menuConfig.cta.secondaryButton}
-          </a>
-
-          {/* Solid — WhatsApp */}
+        <div className="flex justify-center">
           <motion.a
             href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.97 }}
-            className="btn-primary w-full sm:w-auto"
+            className="btn-primary px-10 py-4 text-base"
           >
             {menuConfig.cta.primaryButton}
           </motion.a>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import Image from "next/image";
@@ -17,7 +17,14 @@ const navLinks = [
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
     <>
@@ -25,7 +32,9 @@ export default function Navbar() {
         initial={{ y: -80, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
-        className="fixed top-8 left-0 right-0 z-50 bg-white border-b border-gray-100"
+        className={`fixed top-8 left-0 right-0 z-50 bg-white transition-shadow duration-300 ${
+          scrolled ? "shadow-[0_4px_24px_rgba(0,0,0,0.08)]" : "border-b border-gray-100"
+        }`}
       >
         <div className="container-max px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">

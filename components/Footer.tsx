@@ -47,6 +47,19 @@ export default function Footer() {
                 <span>{cafeConfig.address}</span>
               </div>
             </div>
+
+            <div className="mt-5 pt-5 border-t border-white/10">
+              <p className="font-grotesk text-xs text-white/30 uppercase tracking-[0.15em] mb-1.5">
+                Horario
+              </p>
+              {Object.entries(cafeConfig.hours).map(([days, time]) => (
+                <div key={days} className="flex gap-3">
+                  <span className="font-grotesk text-sm text-white/50">{days}</span>
+                  <span className="font-grotesk text-sm text-miranda-teal font-medium">{time}</span>
+                </div>
+              ))}
+              <p className="font-grotesk text-xs text-white/30 mt-1.5">{cafeConfig.hoursNote}</p>
+            </div>
           </div>
 
           {/* Nav */}

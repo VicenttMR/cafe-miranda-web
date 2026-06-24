@@ -11,8 +11,8 @@ type Favorito = (typeof cafeConfig.favoritos)[0];
 // ─── Desktop variants — gradient rises from bottom ────────────────────────────
 
 const desktopPhotoVariants: Variants = {
-  rest: { scale: 2, transition: { duration: 0.75, ease: "easeOut" } },
-  hover: { scale: 2.1, transition: { duration: 0.75, ease: "easeOut" } },
+  rest: { scale: 1.05, transition: { duration: 0.75, ease: "easeOut" } },
+  hover: { scale: 1.12, transition: { duration: 0.75, ease: "easeOut" } },
 };
 
 const desktopOverlayVariants: Variants = {
@@ -44,7 +44,7 @@ function DesktopCard({ item, index, isInView }: { item: Favorito; index: number;
           <motion.div
             variants={desktopPhotoVariants}
             className="absolute inset-0 will-change-transform"
-            style={{ transformOrigin: "bottom center" }}
+            style={{ transformOrigin: "center center" }}
           >
             <Image
               src={item.image}

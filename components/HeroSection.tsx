@@ -22,6 +22,7 @@ export default function HeroSection() {
         loop
         muted
         playsInline
+        poster="/images/hero.png"
         className="absolute inset-0 w-full h-full object-cover scale-[1.4]"
       >
         <source src="/videos/reel-1.mp4" type="video/mp4" />

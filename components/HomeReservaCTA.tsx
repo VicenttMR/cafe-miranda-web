@@ -15,32 +15,23 @@ export default function HomeReservaCTA() {
         <div className="flex flex-col lg:flex-row items-start lg:items-end justify-between gap-8">
 
           <div>
-            <div className="overflow-hidden">
-              <motion.p
-                initial={{ y: "100%" }}
-                animate={isInView ? { y: 0 } : {}}
-                transition={{ duration: 0.7 }}
-                className="font-anton uppercase text-white leading-none"
-                style={{ fontSize: "clamp(2.5rem, 6vw, 5.5rem)" }}
-              >
-                RESERVA TU
-              </motion.p>
-            </div>
-            <div className="overflow-hidden">
-              <motion.p
-                initial={{ y: "100%" }}
-                animate={isInView ? { y: 0 } : {}}
-                transition={{ duration: 0.7, delay: 0.1 }}
-                className="font-anton uppercase leading-none"
-                style={{
-                  fontSize: "clamp(2.5rem, 6vw, 5.5rem)",
-                  WebkitTextStroke: "var(--stroke-w) white",
-                  color: "transparent",
-                }}
-              >
-                MESA.
-              </motion.p>
-            </div>
+            <motion.h2
+              initial={{ opacity: 0, y: 24 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.7 }}
+              className="font-anton uppercase text-white leading-[0.92]"
+              style={{ fontSize: "clamp(3rem, 8vw, 7rem)" }}
+            >
+              RESERVA<br />TU MESA.
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={isInView ? { opacity: 1 } : {}}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="font-grotesk text-white/70 text-base mt-4 max-w-xs"
+            >
+              Abiertos todos los días · Es Pujols, Formentera
+            </motion.p>
           </div>
 
           <motion.div
