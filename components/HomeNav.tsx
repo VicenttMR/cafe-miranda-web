@@ -6,8 +6,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-// Mantén las mismas rutas e imágenes que tienes actualmente.
-// Solo cambia si quieres actualizar las fotos o los textos.
 const pages = [
   {
     href: "/menu",
@@ -16,6 +14,7 @@ const pages = [
     title: "El Menú",
     description: "Carta viva. Producto local. Sin artificios.",
     color: "#C41E3A",
+    num: "01",
   },
   {
     href: "/nosotros",
@@ -24,14 +23,16 @@ const pages = [
     title: "Nosotros",
     description: "La historia de por qué abrimos — y por qué seguimos.",
     color: "#1DB5AD",
+    num: "02",
   },
   {
     href: "/merch",
     image: "/images/neon-sign.png",
     tag: "Shop Miranda",
     title: "Merch",
-    description: "Gorras, camisetas y tote bags. Edición limitada.",
+    description: "Llévate un trozo de Formentera a casa.",
     color: "#C41E3A",
+    num: "03",
   },
   {
     href: "/donde-estamos",
@@ -40,6 +41,7 @@ const pages = [
     title: "Dónde estamos",
     description: "Av. Miramar, 30. A dos minutos de la playa.",
     color: "#1DB5AD",
+    num: "04",
   },
 ];
 
@@ -64,71 +66,86 @@ export default function HomeNav() {
           Explora
         </motion.p>
 
-        {/* Grid de secciones */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-4">
+        {/* Grid — 1 col móvil, 2 col desktop */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 lg:gap-4">
           {pages.map((page, i) => {
             const isActive = pathname === page.href;
             return (
               <motion.div
                 key={page.href}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 24 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: i * 0.07 }}
+                transition={{ duration: 0.55, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] }}
               >
                 <Link
                   href={page.href}
-                  className={`group relative flex flex-col overflow-hidden rounded-2xl aspect-[4/3] sm:aspect-square lg:aspect-[3/4] ${
+                  className={`group relative flex overflow-hidden rounded-2xl w-full ${
                     isActive ? "ring-2 ring-miranda-teal" : ""
                   }`}
+                  style={{ aspectRatio: "16/9" }}
                 >
                   {/* Foto */}
                   <Image
                     src={page.image}
                     alt={page.title}
                     fill
-                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.05]"
-                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 50vw, 25vw"
+                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+                    sizes="(max-width: 640px) 100vw, 50vw"
                   />
 
-                  {/* Colored gradient overlay */}
+                  {/* Base dark overlay */}
+                  <div className="absolute inset-0 bg-miranda-dark/40 group-hover:bg-miranda-dark/30 transition-colors duration-300" />
+
+                  {/* Colored gradient — bottom */}
                   <div
-                    className="absolute inset-0 transition-opacity duration-300"
+                    className="absolute inset-0"
                     style={{
-                      background: `linear-gradient(to top, ${page.color}99 0%, ${page.color}44 45%, transparent 72%)`,
+                      background: `linear-gradient(to top, ${page.color}cc 0%, ${page.color}55 40%, transparent 70%)`,
                     }}
                   />
 
-                  {/* Contenido */}
-                  <div className="relative z-10 flex flex-col justify-end h-full p-4 lg:p-5">
+                  {/* Número grande — top left, semitransparente */}
+                  <span
+                    className="absolute top-4 left-5 font-anton text-white/20 leading-none select-none"
+                    style={{ fontSize: "clamp(3.5rem, 8vw, 6rem)" }}
+                  >
+                    {page.num}
+                  </span>
 
-                    {/* Tag pequeño */}
-                    <p className="font-grotesk text-[10px] uppercase tracking-wider text-white/55 mb-1.5">
+                  {/* Contenido — siempre visible */}
+                  <div className="relative z-10 flex flex-col justify-end w-full p-5 lg:p-6">
+
+                    <p className="font-grotesk text-[10px] uppercase tracking-wider text-white/60 mb-2">
                       {page.tag}
                     </p>
 
-                    {/* Título */}
-                    <h3 className="font-anton uppercase text-white leading-tight text-xl lg:text-2xl mb-2">
+                    <h3
+                      className="font-anton uppercase text-white leading-none mb-2"
+                      style={{ fontSize: "clamp(1.6rem, 4vw, 2.5rem)" }}
+                    >
                       {page.title}
                     </h3>
 
-                    {/* Descripción — solo visible en sm+ */}
-                    <p className="font-grotesk text-white/65 text-xs leading-snug mb-3 hidden sm:block">
-                      {page.description}
-                    </p>
+                    <div className="flex items-center justify-between gap-4">
+                      <p className="font-grotesk text-white/70 text-sm leading-snug">
+                        {page.description}
+                      </p>
 
-                    {/* Arrow — aparece en hover */}
-                    <div className="flex items-center gap-2 overflow-hidden">
-                      <div className="h-px bg-white flex-1 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out" />
-                      <svg
-                        className="w-4 h-4 text-white flex-shrink-0 translate-x-0 group-hover:translate-x-0.5 transition-transform duration-300"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        strokeWidth={2.5}
-                        aria-hidden
+                      {/* Arrow */}
+                      <div
+                        className="w-9 h-9 rounded-full border border-white/30 flex items-center justify-center flex-shrink-0 group-hover:bg-white/20 transition-colors duration-300"
                       >
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-                      </svg>
+                        <svg
+                          className="w-4 h-4 text-white group-hover:translate-x-0.5 transition-transform duration-300"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                          strokeWidth={2}
+                          aria-hidden
+                        >
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                        </svg>
+                      </div>
                     </div>
                   </div>
 
