@@ -18,40 +18,52 @@ No test suite. `npm run build` is the verification step.
 
 ### Routes
 
-| Route | Notes |
+| Route | Composition |
 |---|---|
-| `/` | Hero → HomeNav → HomeFavoritos → HomeReels → TestimonialsSection → HomeReservaCTA |
-| `/menu` | MenuHero → MenuCategoriesGrid → MenuPlatoDestacado → MenuGridMasonry → MenuPlatoDestacado (reverse) → MenuCTA |
+| `/` | HeroSection → HomeFavoritos → HomeReels → TestimonialsSection → HomeReservaCTA |
+| `/menu` | MenuHero → MenuCategoriesGrid → MenuGridMasonry → MenuCTA |
 | `/nosotros` | PageHeader → AboutSection → HomeReservaCTA |
 | `/merch` | PageHeader → MerchSection → HomeReservaCTA |
 | `/donde-estamos` | PageHeader → LocationSection → HomeReservaCTA |
 | `/reservas` | PageHeader → ReservasSection |
 
+Home sections below the fold load via `next/dynamic` in `app/page.tsx`.
+
 ### Two config files — all content lives here
 
-**`config/cafe-miranda.ts`** — everything site-wide: phone, address, hours, `favoritos` (home page featured dishes), `testimonials`, `merch`. Components import from `cafeConfig`; never hardcode content in components.
+**`config/cafe-miranda.ts`** — everything site-wide: phone, address, hours, coordinates, Google Maps URLs, `favoritos` (home page featured dishes with `accentColor`/`labelTextColor`), `testimonials` (real Google Maps reviews — keep real, don't invent), `merch`. Components import from `cafeConfig`; never hardcode content in components.
 
-**`config/menu-items.ts`** — dedicated to the `/menu` page: `menuConfig` with `hero`, `categories` (4), `destacado`, `masonry` (6 photos), `secundario`, `cta`. Edit here to change the menu page.
+**`config/menu-items.ts`** — the `/menu` page: `menuConfig` with `hero`, `categories` (4), `masonry` (6 photos), `cta`. The `destacado`/`secundario` keys are orphaned (their component was removed).
 
 ### Layout-level components
 
-`app/layout.tsx` renders two fixed elements before `<Navbar />`:
-- `<AnnouncementBar />` — white animated ticker fixed at `top-0 z-[60]`, always visible on scroll, on every page
-- `<Navbar />` — fixed at `top-8` (32px, directly below the bar), `z-50`, h-16 with a 140×140px logo that overflows the navbar intentionally
+`app/layout.tsx` renders fixed elements around `<main>`:
+- `<RotatingStamp />` — circular rotating text stamp with logo, fixed bottom-right, `z-40`, all screen sizes
+- `<AnnouncementBar />` — teal ticker fixed at `top-0 z-[60]`, shows hours/location/WhatsApp info
+- `<Navbar />` — fixed at `top-8` (directly below the bar), `z-50`, h-16 with a 140×140px logo that overflows intentionally
 
-Total fixed header height: ~96px. All page sections use `pt-24` to clear it.
+Total fixed header height: ~96px. Page sections use `pt-24` to clear it.
 
-### Component conventions
+### Animation conventions
 
-- All animated components are `"use client"` and trigger via `useInView` from Framer Motion.
-- `PageHeader` is used by every subpage — props: `label`, `title`, `titleOutline?`, `bg: "teal" | "red" | "dark"`.
-- `AboutSection` accepts `hideHeader?: boolean` — pass `hideHeader` on `/nosotros` because `PageHeader` already renders the heading.
+- **Infinite tickers must use CSS `@keyframes`** (defined in `app/globals.css`: `ticker-hero`, `ticker-announcement`, etc.), never Framer Motion `repeat: Infinity` — Framer pauses on tab blur and the ticker freezes.
+- Scroll-triggered animations: `"use client"` + `useInView` from Framer Motion with `once: true`.
+- Outline text uses `WebkitTextStroke: "var(--stroke-w) <color>"` — the `--stroke-w` CSS variable is 1.5px on mobile, 3px on desktop (set in globals.css). Never hardcode stroke width.
+- Dynamic per-item colors (dish accents, gradients) go in inline `style` with hex+alpha suffixes (`${color}99`) — Tailwind can't generate dynamic classes.
+- Autoplay videos use `preload="none"` + a `poster` image so they never render black while loading.
+- `HomeFavoritos` photos use `scale: 2, transformOrigin: "bottom center"` to crop the white top of the 1080×1350 source images — don't "fix" this.
+
+### Mobile-first patterns
+
+Mobile is the priority. Sections with card grids on desktop become horizontal snap carousels on mobile (`overflow-x-auto snap-x snap-mandatory scrollbar-none`), e.g. HomeFavoritos, TestimonialsSection, HomeReels. Text must be always-visible on mobile — never gate content behind hover.
 
 ### Fonts (Tailwind classes)
 
-- `font-anton` — display headings
+- `font-anton` — display headings (uppercase, huge, editorial)
 - `font-grotesk` — body, labels, buttons (Space Grotesk)
 - `font-inter` — small UI text
+
+Only these three exist in `tailwind.config.js`. Classes like `font-poppins` silently fall back to sans-serif.
 
 ### Brand colors
 
@@ -59,29 +71,29 @@ Total fixed header height: ~96px. All page sections use `pt-24` to clear it.
 miranda-red:   #C41E3A
 miranda-teal:  #1DB5AD
 miranda-dark:  #1A1A1A
-miranda-cream: (light bg for card sections)
+miranda-cream: #FAFAF7   (light bg for card sections)
 ```
 
 ### Media assets
 
-`public/images/` — all images served by Next.js `<Image>`. Real photos added from Instagram (named by content, e.g. `pancakes-berries.jpg`, `tapa-bacalao.jpg`, `ambiente-tapas.jpg`). Logos: `logo-principal.png` (transparent, 1080×1080, used everywhere) and `logo-secundario.png` (stacked red text, no bg).
+`public/images/` — all images served via Next.js `<Image>`, named by content (e.g. `pancakes-berries.jpg`). Logos: `logo-principal.png` (transparent 1080×1080) and `logo-secundario.png` (stacked red text).
 
-`public/videos/` — three Instagram Reels (`reel-1.mp4` 600KB, `reel-2.mp4` 1.4MB, `reel-3.mp4` 1.5MB). `reel-1.mp4` is the hero background. All three show in `HomeReels`.
+`public/videos/` — three Instagram Reels. `reel-1.mp4` is the hero background; all three show in `HomeReels`.
 
-`archivosmiranda/` — source assets folder at project root. **Not served.** Raw files from the client (screenshots, Instagram exports). Copy from here to `public/` when adding new assets.
+`archivosmiranda/` — raw client files at project root. **Gitignored, not served.** Copy from here into `public/` when adding assets.
 
 `next.config.js` only allows local images — no remote URLs without updating it.
 
 ### SEO
 
-- `app/layout.tsx` — global metadata, OG tags, Twitter card
-- `components/LocalBusinessSchema.tsx` — JSON-LD Restaurant schema, reads from `cafeConfig`
+- `app/layout.tsx` — global metadata, OG tags, Twitter card. Google Search Console verification code is still pending (empty `verification` block).
+- `components/LocalBusinessSchema.tsx` — JSON-LD Restaurant schema, reads real coordinates/URLs from `cafeConfig`
 - `app/sitemap.ts` / `app/robots.ts` — update sitemap when adding routes
 
 ### WhatsApp reservations
 
-Phone in `cafeConfig` must be `whatsapp: "34603319813"` (no `+`, no spaces). The reservation form in `ReservasSection` builds a message string and opens `wa.me/` — no backend.
+Phone in `cafeConfig` must be `whatsapp: "34603319813"` (no `+`, no spaces). `ReservasSection` builds a message string and opens `wa.me/` — no backend.
 
 ### Deployment
 
-Vercel, auto-deploy on push to `main`. No environment variables needed.
+Vercel, auto-deploy on push to `main` (repo `VicenttMR/cafe-miranda-web`). No environment variables needed.
